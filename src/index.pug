@@ -9,7 +9,209 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+      .welcome-section
+       
+      
+        section.hero
+          .container.hero__container
+            header.hero__header
+              .hero__logo
+                .logo BA
+              .hero__menu
+                nav.nav
+                  - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+                  ul.nav__list
+                    each item in menu
+                      li.nav__item
+                        a(href="").nav__link #{item}
+              .hero__links
+                - var icons = ["insta", "vk", "github"]
+                ul.sosials
+                  each item in icons
+                    li.sosials__item
+                      a(href="").sosials__link
+                        +icon(`${item}`, "sosials__icon")
+            .hero__content
+              .user-info
+                h1.user-info__desc Личный сайт веб разработчика
+                .user-info__username Galina Kisseleva
+            .hero__btns
+              .scroll-down-btns Скролл
+                a(href="").scroll__link
+                  svg.scroll__img(viewBox="-90 0 512 512" preserveAspectRatio="none" fill="black")
+                    use(xlink:href="./images/icons/scroll.svg")
+
+                 
+        section.about
+
+          .container.about__container
+            .about__left
+              .user
+                .avatar.user__avatar
+                  +image("content/user.jpg", "avatar__pic")
+                ul.user__desc
+                  -
+                    var items = [
+                      ["Проживаю", "Осло"],
+                      ["Возраст", "30"],
+                      ["Родился", "23.11.1988"]
+                    ]
+                  each item in items  
+                    li.user__desc-item
+                      .user__key #{item[0]}
+                      .user__value #{item[1]}
+            .about__right
+              h4.about__prolog Привет, меня зовут
+              h2.about__title Galina Kisseleva
+              .about__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+              .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+      .triangles
+        svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+          polygon(points="0,0 0,100 1000,100")
+        svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+          polygon(points="0,100 1000,100 1000,0")
+      .values
+        .container.values__container
+          .values__left
+            +image("content/sekken.png", "sekken__pic")
+          .values__right
+            .values__title
+              h2.section-title.values__title-text Чем я могу быть вам полезен
+              .values__desc
+                p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+            ul.user-skills
+            
+
+              - 
+                var skills = [
+                  ['Front-end', ['HTML5', 'CSS', 'Javascript', 'Jquery и Vue.js']],
+                  ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
+                ]
+              each item in skills 
+                li.user-skills__item.skills-row 
+                  h3.skills-row__title #{item[0]}
+                  ul.skills-row__list
+                    each skill in item[1]
+                      li.skills-row__item
+                        .skill
+                          svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
+                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
+                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
+                            linear-gradient()
+                          .skill__title #{skill}
+                    
+      section.works
+        .container.works__container
+          h2.section-title__works Мои работы
+          .works__main
+            .works__left
+              .slider
+                +image("content/preview__big.jpg", "slider__fillpic")
+                .slider__preview
+                  ul.previews
+                    - for (var i = 0; i < 3; i++)
+                      li.previews__item
+                        img.previews__pic
+                .slider__buttons
+                  .slider-button
+                    button.slider-buttons__item.slider-buttons__item--slide--prev 
+                    button.slider-buttons__item.slider-buttons__item--slide--next
+
+            .works__right
+              ul.works__tags
+                li.tags
+                  .tags__item HTML
+                li.tags
+                  .tags__item CSS
+                li.tags
+                  .tags__item JavaScript
+              .works__text
+                h3.works__title Сайт школы
+                .works__desc-text
+                  p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                a.iconed-link
+                  .iconed-link__icon
+                  .iconed-link__text
+      .end-section
+        section.reviews
+          .container.reviews__section
+            .reviews__title
+              h2.section-title Что обо мне говорят
+              .slider__links
+                .slider__links--btn--left
+                  a(href="")
+                    svg.left__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill= "#464d62")
+                      polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		 		")
+                .slider__links--btn--right
+                  a(href="")
+                    svg.right__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill="#464d62")
+                      polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		")
+                
+            .reviews__menu
+              .reviews__desc--left
+                .reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                .reviews__author
+                  .reviews__author--pic
+                    +image("content/kovalchuk.jpg", "author__pic")
+                  .reviews__author--desc
+                    h4.reviews__author--name Ковальчук Дмитрий
+                    .reviews__author--position Основатель Loftschool
+              .reviews__desc--right
+                .reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                .reviews__author
+                  .reviews__author--pic
+                    +image("content/vladimir.jpg", "author__pic")
+                  .reviews__author--desc
+                    h4.reviews__author--name Ковальчук Дмитрий
+                    .reviews__author--position Основатель Loftschool
+
+        section.contacts
+          .container.main__contacts
+            h2.section-title Связаться со мной
+            .form.contacts__form
+              .main__contacts--data
+                .label.contact--data--name
+                  .contact--data--label Введите ваше имя
+                  input.contact--data--input(placeholder="Ковальчук Дмитрий" type="text" required name="name") 
+                .label.contact--data--mail
+                  .contact--data--label Введите ваш e-mail
+                  input.contact--mail--input(placeholder="loftschool@study.com") 
+              .main__contact--demand
+                .label.contact--data--demand
+                  .contact--demand--label Сообщение к письму
+                  input.contact--demand--input(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
+          footer.contact__footer
+            .container.footer__container
+              .footer__main--info
+                .year__data © 2019
+                .user-info__footer
+                  .user-info__username--footer Galina Kisseleva
+                  h1.user-info__desc--footer Личный сайт веб разработчика
+              .footer__menu--info
+                nav.nav
+                  - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+                  ul.nav__list
+                    each item in menu
+                      li.nav__item
+                        a(href="").nav__link #{item}
+                .footer__ps
+                  .footer__ps--info
+                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                      .footer__links
+                        - var icons = ["insta", "vk", "github"]
+                        ul.sosials
+                          each item in icons
+                            li.sosials__item
+                              a(href="").sosials__link
+                                +icon(`${item}`, "sosials__icon")
+                  .footer__citate
+                    .main__citate Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                    h3.author__name Martin Golding
+                  
+
+
+
+             
+        
+
