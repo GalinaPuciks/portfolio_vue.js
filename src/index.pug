@@ -110,18 +110,23 @@ html(lang="en")
           h2.section-title__works Мои работы
           .works__main
             .works__left
-              .slider
-                +image("content/preview__big.jpg", "slider__fillpic")
+    
+                .slider
+                  +image("content/preview__big.jpg", "slider__fullpic")
                 .slider__preview
                   ul.previews
-                    - for (var i = 0; i < 3; i++)
-                      li.previews__item
-                        img.previews__pic
+                    li.previews__item
+                      +image("content/preview_1.png", "preview__item--pic")
+                    li.previews__item
+                      +image("content/preview_2.png", "preview__item--pic")
+                    li.previews__item
+                      +image("content/preview_3.png", "preview__item--pic")
                 .slider__buttons
                   .slider-button
                     button.slider-buttons__item.slider-buttons__item--slide--prev
-                      +icon(`arrow-down`, "slider_arrow-img")
+                      +icon(`arrow-down`, "slider_arrow--prev")
                     button.slider-buttons__item.slider-buttons__item--slide--next
+                      +icon(`arrow-down`, "slider_arrow--next")
 
             .works__right
               ul.works__tags
@@ -132,12 +137,13 @@ html(lang="en")
                 li.tags
                   .tags__item JavaScript
               .works__text
-                h3.works__title Сайт школы
+                h3.works__title Сайт школы образования
                 .works__desc-text
                   p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
                 a.iconed-link
                   .iconed-link__icon
-                  .iconed-link__text
+                    +icon(`link`, "link__icon")
+                  .iconed-link__text Посмотреть сайт
       .end-section
         section.reviews
           .container.reviews__section

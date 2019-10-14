@@ -6,5 +6,6 @@
   "bp-tablets": "768px",
   "bp-phones": "480px",
   "beginColor": "#7a00ea",
-  "endColor": "#4e00ed"
+  "endColor": "#4e00ed",
+  "mainColor": "#464d62"
 }
