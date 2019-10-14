@@ -129,6 +129,7 @@ html(lang="en")
                       +icon(`arrow-down`, "slider_arrow--next")
 
             .works__right
+              
               ul.works__tags
                 li.tags
                   .tags__item HTML
@@ -139,6 +140,7 @@ html(lang="en")
               .works__text
                 h3.works__title Сайт школы образования
                 .works__desc-text
+                  .number 4
                   p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
                 a.iconed-link
                   .iconed-link__icon
@@ -161,7 +163,9 @@ html(lang="en")
                 
             .reviews__menu
               .reviews__desc--left
-                .reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                .reviews__dest--info
+                  .reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  +icon(`quote`, "quote__icon")
                 .reviews__author
                   .reviews__author--pic
                     +image("content/kovalchuk.jpg", "author__pic")
@@ -169,7 +173,9 @@ html(lang="en")
                     h4.reviews__author--name Ковальчук Дмитрий
                     .reviews__author--position Основатель Loftschool
               .reviews__desc--right
-                .reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                .reviews__dest--info
+                  .reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  +icon(`quote`, "quote__icon")
                 .reviews__author
                   .reviews__author--pic
                     +image("content/vladimir.jpg", "author__pic")
@@ -179,20 +185,26 @@ html(lang="en")
 
         section.contacts
           .container.main__contacts
-            h2.section-title Связаться со мной
-            .form.contacts__form
+            h2.section-title--contact Связаться со мной
+            form.contacts__form
               .main__contacts--data
-                .label.contact--data--name
+                label.contact--data--name
                   .contact--data--label Введите ваше имя
-                  input.contact--data--input(placeholder="Ковальчук Дмитрий" type="text" required name="name") 
-                .label.contact--data--mail
+                  .contact--desc
+                    +icon('avatar', "avatar__pic")
+                    input.contact--data--input(placeholder="loftschool@study.com") 
+                label.contact--data--mail
                   .contact--data--label Введите ваш e-mail
-                  input.contact--mail--input(placeholder="loftschool@study.com") 
+                  .contact--desc
+                    +icon('envelope', "avatar__pic")
+                    input.contact--mail--input(placeholder="loftschool@study.com") 
               .main__contact--demand
-                .label.contact--data--demand
-                  .contact--demand--label Сообщение к письму
-                  input.contact--demand--input(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
-          footer.contact__footer
+                label.contact--data--demand
+                  .contact--data--label Сообщение к письму
+                  .contact--desc
+                    +icon('chat', "avatar__pic")
+                    input.contact--demand--input(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
+    footer.contact__footer
             .container.footer__container
               .footer__main--info
                 .year__data ©2019
