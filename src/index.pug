@@ -119,7 +119,8 @@ html(lang="en")
                         img.previews__pic
                 .slider__buttons
                   .slider-button
-                    button.slider-buttons__item.slider-buttons__item--slide--prev 
+                    button.slider-buttons__item.slider-buttons__item--slide--prev
+                      +icon(`arrow-down`, "slider_arrow-img")
                     button.slider-buttons__item.slider-buttons__item--slide--next
 
             .works__right
@@ -188,27 +189,27 @@ html(lang="en")
           footer.contact__footer
             .container.footer__container
               .footer__main--info
-                .year__data © 2019
+                .year__data ©2019
                 .user-info__footer
                   .user-info__username--footer Galina Kisseleva
                   h1.user-info__desc--footer Личный сайт веб разработчика
               .footer__menu--info
-                nav.nav
+                nav.nav.nav__footer
                   - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
                   ul.nav__list
                     each item in menu
-                      li.nav__item
+                      li.nav__item--footer
                         a(href="").nav__link #{item}
                 .footer__ps
                   .footer__ps--info
-                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. 
                       .footer__links
-                        - var icons = ["insta", "vk", "github"]
-                        ul.sosials
-                          each item in icons
-                            li.sosials__item
-                              a(href="").sosials__link
-                                +icon(`${item}`, "sosials__icon")
+                              - var icons = ["insta", "vk", "github"]
+                              ul.sosials__footer
+                                each item in icons
+                                  li.sosials__item--footer
+                                    a(href="").sosials__link
+                                      +icon(`${item}`, "sosials__icon--footer")
                   .footer__citate
                     .main__citate Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                     h3.author__name Martin Golding

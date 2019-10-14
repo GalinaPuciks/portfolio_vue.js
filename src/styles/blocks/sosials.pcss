@@ -1,17 +1,17 @@
-.sosials {
+.sosials, .sosials__footer {
     display: flex;
     align-items: center;
     opacity: .7;
 }
 
 
-.sosials__icon {
+.sosials__icon, .sosials__icon--footer {
     width: 28px;
     height: 31px;
     display: block;
 }
 
-.sosials__item {
+.sosials__item, .sosials__item--footer {
     margin-right: 40px;
     &:last-child {
         margin-right: 0;
@@ -19,4 +19,19 @@
     &:hover {
         opacity: .3;
     }
+}
+
+.sosials__item--footer {
+    padding: 10px;
+    border: 2px solid  #66686e;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.sosials__icon--footer {
+    fill: #66686e;
+}
+
+.footer__links {
+    padding-top: 20px;
 }
