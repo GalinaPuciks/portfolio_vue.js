@@ -36,10 +36,11 @@ html(lang="en")
                 h1.user-info__desc Личный сайт веб разработчика
                 .user-info__username Galina Kisseleva
             .hero__btns
-              .scroll-down-btns Скролл
-                a(href="").scroll__link
-                  svg.scroll__img(viewBox="-90 0 512 512" preserveAspectRatio="none" fill="black")
-                    use(xlink:href="./images/icons/scroll.svg")
+              a(href="").scroll__link
+                .scroll-down-btns Скролл
+                +icon(`scroll`, "scroll_img")
+                
+                  
 
                  
         section.about
@@ -95,11 +96,14 @@ html(lang="en")
                     each skill in item[1]
                       li.skills-row__item
                         .skill
-                          svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
-                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
-                            linear-gradient()
+                          svg(viewBox="0 0 100 100" preserveAspectRatio="none" fill="transparent").skill__shape
+                            circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--under
+                            circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--above
+                            linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                              stop(offset="0%" stop-color= "#7900ea")
+                              stop(offset="100%" stop-color= "#4e00ed")
                           .skill__title #{skill}
+
                     
       section.works
         .container.works__container
