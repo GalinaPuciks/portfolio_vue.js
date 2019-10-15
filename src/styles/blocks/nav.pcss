@@ -1,6 +1,9 @@
 .nav__list {
     display: flex;
     align-items: center;
+    @include tablets {
+        display: none;
+    }
 }
 
 .nav__item {
