@@ -49,7 +49,7 @@ html(lang="en")
             .about__left
               .user
                 .avatar.user__avatar
-                  +image("content/user.jpg", "avatar__pic")
+                  +image("content/user.jpg", "avatar__pic--user")
                 ul.user__desc
                   -
                     var items = [
@@ -152,11 +152,13 @@ html(lang="en")
             .reviews__title
               h2.section-title Что обо мне говорят
               .slider__links
-                .slider__links--btn--left
+                button.slider__links--btn--left
                   a(href="")
                     svg.left__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill= "#464d62")
                       polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		 		")
-                .slider__links--btn--right
+                
+                  
+                button.slider__links--btn--right
                   a(href="")
                     svg.right__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill="#464d62")
                       polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		")
