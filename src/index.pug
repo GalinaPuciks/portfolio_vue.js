@@ -31,15 +31,18 @@ html(lang="en")
                     li.sosials__item
                       a(href="").sosials__link
                         +icon(`${item}`, "sosials__icon")
+              a.gamburger-menu-link(href="")
+                .gamburger-menu-link__bars
             .hero__content
               .user-info
                 h1.user-info__desc Личный сайт веб разработчика
                 .user-info__username Galina Kisseleva
             .hero__btns
-              .scroll-down-btns Скролл
-                a(href="").scroll__link
-                  svg.scroll__img(viewBox="-90 0 512 512" preserveAspectRatio="none" fill="black")
-                    use(xlink:href="./images/icons/scroll.svg")
+              a(href="").scroll__link
+                .scroll-down-btns Скролл
+                +icon(`scroll`, "scroll_img")
+                
+                  
 
                  
         section.about
@@ -48,7 +51,7 @@ html(lang="en")
             .about__left
               .user
                 .avatar.user__avatar
-                  +image("content/user.jpg", "avatar__pic")
+                  +image("content/user.jpg", "avatar__pic--user")
                 ul.user__desc
                   -
                     var items = [
@@ -95,30 +98,40 @@ html(lang="en")
                     each skill in item[1]
                       li.skills-row__item
                         .skill
-                          svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
-                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
-                            linear-gradient()
+                          svg(viewBox="0 0 100 100" preserveAspectRatio="none" fill="transparent").skill__shape
+                            circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--under
+                            circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--above
+                            linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                              stop(offset="0%" stop-color= "#7900ea")
+                              stop(offset="100%" stop-color= "#4e00ed")
                           .skill__title #{skill}
+
                     
       section.works
         .container.works__container
           h2.section-title__works Мои работы
           .works__main
             .works__left
-              .slider
-                +image("content/preview__big.jpg", "slider__fillpic")
+    
+                .slider
+                  +image("content/preview__big.jpg", "slider__fullpic")
                 .slider__preview
                   ul.previews
-                    - for (var i = 0; i < 3; i++)
-                      li.previews__item
-                        img.previews__pic
+                    li.previews__item
+                      +image("content/preview_1.png", "preview__item--pic")
+                    li.previews__item
+                      +image("content/preview_2.png", "preview__item--pic")
+                    li.previews__item
+                      +image("content/preview_3.png", "preview__item--pic")
                 .slider__buttons
                   .slider-button
-                    button.slider-buttons__item.slider-buttons__item--slide--prev 
+                    button.slider-buttons__item.slider-buttons__item--slide--prev
+                      +icon(`arrow-down`, "slider_arrow--prev")
                     button.slider-buttons__item.slider-buttons__item--slide--next
+                      +icon(`arrow-down`, "slider_arrow--next")
 
             .works__right
+              
               ul.works__tags
                 li.tags
                   .tags__item HTML
@@ -127,30 +140,36 @@ html(lang="en")
                 li.tags
                   .tags__item JavaScript
               .works__text
-                h3.works__title Сайт школы
+                h3.works__title Сайт школы образования
                 .works__desc-text
+                  .number 4
                   p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
                 a.iconed-link
                   .iconed-link__icon
-                  .iconed-link__text
+                    +icon(`link`, "link__icon")
+                  .iconed-link__text Посмотреть сайт
       .end-section
         section.reviews
           .container.reviews__section
             .reviews__title
               h2.section-title Что обо мне говорят
               .slider__links
-                .slider__links--btn--left
+                button.slider__links--btn--left
                   a(href="")
                     svg.left__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill= "#464d62")
                       polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		 		")
-                .slider__links--btn--right
+                
+                  
+                button.slider__links--btn--right
                   a(href="")
                     svg.right__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill="#464d62")
                       polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		")
                 
             .reviews__menu
               .reviews__desc--left
-                .reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                .reviews__dest--info
+                  .reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  +icon(`quote`, "quote__icon")
                 .reviews__author
                   .reviews__author--pic
                     +image("content/kovalchuk.jpg", "author__pic")
@@ -158,7 +177,9 @@ html(lang="en")
                     h4.reviews__author--name Ковальчук Дмитрий
                     .reviews__author--position Основатель Loftschool
               .reviews__desc--right
-                .reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                .reviews__dest--info
+                  .reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  +icon(`quote`, "quote__icon")
                 .reviews__author
                   .reviews__author--pic
                     +image("content/vladimir.jpg", "author__pic")
@@ -168,43 +189,51 @@ html(lang="en")
 
         section.contacts
           .container.main__contacts
-            h2.section-title Связаться со мной
-            .form.contacts__form
+            h2.section-title--contact Связаться со мной
+            form.contacts__form
               .main__contacts--data
-                .label.contact--data--name
+                label.contact--data--name
                   .contact--data--label Введите ваше имя
-                  input.contact--data--input(placeholder="Ковальчук Дмитрий" type="text" required name="name") 
-                .label.contact--data--mail
+                  .contact--desc
+                    +icon('avatar', "avatar__pic")
+                    input.contact--data--input(placeholder="loftschool@study.com") 
+                label.contact--data--mail
                   .contact--data--label Введите ваш e-mail
-                  input.contact--mail--input(placeholder="loftschool@study.com") 
+                  .contact--desc
+                    +icon('envelope', "avatar__pic")
+                    input.contact--mail--input(placeholder="loftschool@study.com") 
               .main__contact--demand
-                .label.contact--data--demand
-                  .contact--demand--label Сообщение к письму
-                  input.contact--demand--input(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
-          footer.contact__footer
+                label.contact--data--demand
+                  .contact--data--label Сообщение к письму
+                  .contact--desc
+                    +icon('chat', "avatar__pic")
+                    input.contact--demand--input(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
+              .button__box
+                button.send__button(type="submit").gradient__button отправить
+      footer.contact__footer
             .container.footer__container
               .footer__main--info
-                .year__data © 2019
+                .year__data ©2019
                 .user-info__footer
                   .user-info__username--footer Galina Kisseleva
                   h1.user-info__desc--footer Личный сайт веб разработчика
               .footer__menu--info
-                nav.nav
+                nav.nav.nav__footer
                   - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
                   ul.nav__list
                     each item in menu
-                      li.nav__item
+                      li.nav__item--footer
                         a(href="").nav__link #{item}
                 .footer__ps
                   .footer__ps--info
-                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                      p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. 
                       .footer__links
-                        - var icons = ["insta", "vk", "github"]
-                        ul.sosials
-                          each item in icons
-                            li.sosials__item
-                              a(href="").sosials__link
-                                +icon(`${item}`, "sosials__icon")
+                              - var icons = ["insta", "vk", "github"]
+                              ul.sosials__footer
+                                each item in icons
+                                  li.sosials__item--footer
+                                    a(href="").sosials__link
+                                      +icon(`${item}`, "sosials__icon--footer")
                   .footer__citate
                     .main__citate Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                     h3.author__name Martin Golding

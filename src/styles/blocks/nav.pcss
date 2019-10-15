@@ -1,6 +1,9 @@
 .nav__list {
     display: flex;
     align-items: center;
+    @include tablets {
+        display: none;
+    }
 }
 
 .nav__item {
@@ -12,11 +15,11 @@
 
 .nav__item {
     color: #464d62;
-    font-family: "Open Sans";
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 30px;
     &:hover {
         color:red;
+        transition: 0.5s;
     }
-    }
+}

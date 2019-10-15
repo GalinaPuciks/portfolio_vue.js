@@ -1,33 +1,121 @@
 .main__contacts--data {
     display: flex;
+    margin-bottom: 40px;
 }
 
-.label.contact--data--name {
-    margin-right: 50px;
+.contact--data--name {
+    margin-right: 64px;
+    border-bottom: 2px solid grey;
+    width: 410px;
+    
 }
 
 .contact--data--input, .contact--mail--input {
     border: none;
-    border-bottom: 2px solid grey;
     background: none;
     resize: vertical;
+    color: #414c63;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 48px;
 }
 
 .main__contact--demand {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 57px;
 
 }
 
 .contact--demand--input {
     border: none;
-    border-bottom: 2px solid grey;
     background: none;
     resize: vertical;
-    width: 100% 
+    color: #414c63;
+font-size: 18px;
+font-weight: 700;
+line-height: 48px;
+    
 }
 
 .contacts__form {
-    width: 60%
+    width: 70%
 }
+
+
+.section-title--contact {
+color: mainColor;
+font-size: 36px;
+font-weight: 700;
+line-height: 48px;
+margin-bottom: 90px;
+}
+
+.avatar__pic {
+width: 30px;
+height: 30px;
+margin-right: 10px;
+margin-bottom: 5px;
+opacity: 0.3;
+color: mainColor;
+font-size: 16px;
+font-weight: 400;
+line-height: 30px;
+}
+
+.contact--desc {
+    display: flex;
+}
+
+.contact--data--mail {
+    border-bottom: 2px solid grey;
+    width: 410px;
+}
+
+
+.contact--data--demand {
+    border-bottom: 2px solid grey;
+    width: 884px; 
+}
+
+.contact--data--label {
+margin-bottom: 16px;
+opacity: 0.3;
+color: mainColor;
+font-size: 16px;
+font-weight: 400;
+line-height: 30px;
+}
+
+.button__box {
+    width: 95%;
+    flex-wrap: wrap;
+ }
+
+ .send__button {
+width: 350px;
+height: 83px;
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+box-shadow: 0 2px 20px -5px grey;
+border-radius: 50px 0;
+cursor: pointer;
+font-size: 18px;
+font-weight: 700;
+line-height: 48px;
+text-transform: uppercase;
+color: white;
+margin-bottom: 134px;
+
+ }
+
+ .send__button:hover {
+   background-position: right center; 
+   color: red;
+ }
+
+ .gradient__button {
+   background-image: linear-gradient(to right, #9300e8 0%, #5900ec 50% #4a00ed 100%);
+ }

@@ -30,6 +30,7 @@ display: flex;
 
 .reviews__author {
     display: flex;
+    padding-left: 75px;
 }
 .reviews__author--pic {
     overflow: hidden;
@@ -74,7 +75,6 @@ line-height: 48px;
 .reviews__author--position {
     opacity: 0.3;
 color: #464d62;
-font-family: "Open Sans - Semibold";
 font-size: 16px;
 font-weight: 400;
 line-height: 30px;
@@ -89,6 +89,11 @@ line-height: 30px;
     border: 2px solid #464d62;
     width: 50px;
     border-radius: 50%;
+    background-color: transparent;
+    &:hover {
+        background-color: red;
+        transition: 0.5s;
+    }
 }
 
 .slider__links--btn--left{
@@ -96,5 +101,23 @@ line-height: 30px;
 }
 
 .section-title{
-    margin-right: 120px;
+margin-right: 120px;
+color: mainColor;
+font-size: 36px;
+font-weight: 700;
+line-height: 48px;
 }
+
+.reviews__dest--info {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.quote__icon {
+    width: 63px;
+    height: 75px;
+    margin-right: 20px;
+    fill: mainColor;
+    opacity: 0.05;
+}
+
