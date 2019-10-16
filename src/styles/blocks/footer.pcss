@@ -4,6 +4,9 @@
 
 .footer__ps {
     display: flex;
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .contact__footer {
@@ -17,6 +20,9 @@
 .footer__main--info {
     display: flex;
     margin-right: 100px;
+    @include tablets {
+        flex-direction: column;
+    }
 }
 
 .year__data {
@@ -25,6 +31,9 @@ color: rgba(#ffffff, .1);
 font-size: 48px;
 font-weight: 600;
 line-height: 30px;
+@include tablets {
+    margin-bottom: 31px;
+}
 }
 
 .user-info__username--footer {
@@ -46,6 +55,9 @@ line-height: 30px;
 .footer__container {
     height: 402px;
     padding-top: 100px;
+    @include tablets {
+        height: 482px;
+    }
 }
 
 .nav__item--footer {
@@ -96,7 +108,16 @@ font-style: italic;
 line-height: 30px;
 }
 
+.nav__list--footer {
+    display: flex;
+    align-items: center;
+    @include tablets {
+        display: flex;
+    flex-wrap: wrap;
 
+    }
+
+}
 
 
 

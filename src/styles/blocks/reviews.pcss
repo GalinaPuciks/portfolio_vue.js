@@ -82,6 +82,9 @@ line-height: 30px;
 
 .reviews__desc--left {
     margin-right: 180px;
+    @include tablets {
+        margin-right: 20px;
+    }
 }
 
 .slider__links--btn--right, .slider__links--btn--left {
@@ -119,5 +122,9 @@ line-height: 48px;
     margin-right: 20px;
     fill: mainColor;
     opacity: 0.05;
+    @include tablets {
+        width: 30px;
+        height: 26px;
+    }
 }
 

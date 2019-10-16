@@ -22,6 +22,9 @@ stroke-width: 13px;
   .values__container {
       display: flex;
       padding-top: 150px;
+      @include tablets {
+        flex-direction: column-reverse;
+      } 
   }
 
   .skills-row__list{
@@ -36,10 +39,18 @@ font-size: 30px;
 font-weight: 700;
 line-height: 36px;
 margin-bottom: 60px;
+@include tablets {
+  display: flex;
+}
   }
 
   .values__left {
     padding-top: 60px;
+    @include tablets {
+      padding-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
   }
 
 .skills-row__title {
@@ -58,6 +69,9 @@ font-size: 16px;
 font-weight: 400;
 line-height: 30px;
 margin-bottom: 90px;
+@include tablets {
+  width: 428px;
+}
 }
 
 .user-skills {
@@ -81,4 +95,17 @@ margin-bottom: 90px;
 
 .sekken__pic {
   max-width: none;
+  @include tablets {
+  width:281px;
 }
+ }
+
+ .values__title {
+   @include tablets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+   }
+
+ }
