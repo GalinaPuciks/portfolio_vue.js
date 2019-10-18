@@ -9,70 +9,86 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .welcome-section
-       
+      section.parallax
+        .parallax__layer(data-speed="0.1")
+          +image("content/parallax/Sky.png", "parallax__image")
+        .parallax__layer(data-speed="0.13")
+          +image("content/parallax/Mountain.png", "parallax__image")
+        .parallax__layer(data-speed="0.16")
+          +image("content/parallax/Baloon.png", "parallax__image")
+        .parallax__layer(data-speed="0.2")
+          +image("content/parallax/Cloud.png", "parallax__image")
+        .parallax__layer(data-speed="0.23")
+          +image("content/parallax/Man.png", "parallax__image")
+        .parallax__layer(data-speed="0.25")
+          +image("content/parallax/Mountain1.png", "parallax__image")
+        .parallax__layer(data-speed="0.28")
+          +image("content/parallax/White.png", "parallax__image")
+        //-.parallax__layer--static(data-speed="0.28")
+          +image("content/Baloon.png", "parallax__image--static")
       
-        section.hero
-          .container.hero__container
-            header.hero__header
-              .hero__logo
-                .logo BA
-              .hero__menu
-                nav.nav
-                  - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
-                  ul.nav__list
-                    each item in menu
-                      li.nav__item
-                        a(href="").nav__link #{item}
-              .hero__links
-                - var icons = ["insta", "vk", "github"]
-                ul.sosials
-                  each item in icons
-                    li.sosials__item
-                      a(href="").sosials__link
-                        +icon(`${item}`, "sosials__icon")
-              a.gamburger-menu-link(href="")
-                .gamburger-menu-link__bars
-            .hero__content
-              .user-info
-                h1.user-info__desc Личный сайт веб разработчика
-                .user-info__username Galina Kisseleva
-            .hero__btns
-              a(href="").scroll__link
-                .scroll-down-btns Скролл
-                +icon(`scroll`, "scroll_img")
-                
-                  
+        .welcome-section
+          section.hero
+            .container.hero__container
+              header.hero__header
+                .hero__logo
+                  .logo BA
+                .hero__menu
+                  nav.nav
+                    - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+                    ul.nav__list
+                      each item in menu
+                        li.nav__item
+                          a(href="").nav__link #{item}
+                .hero__links
+                  - var icons = ["insta", "vk", "github"]
+                  ul.sosials
+                    each item in icons
+                      li.sosials__item
+                        a(href="").sosials__link
+                          +icon(`${item}`, "sosials__icon")
+                a.gamburger-menu-link(href="")
+                  .gamburger-menu-link__bars
+              .hero__content
+                .user-info
+                  h1.user-info__desc Личный сайт веб разработчика
+                  .user-info__username Galina Kisseleva
+              .hero__btns
+                a(href="").scroll__link
+                  .scroll-down-btns Скролл
+                  +icon(`scroll`, "scroll_img")
+                      
+                        
 
-                 
-        section.about
+                      
+          section.about
 
-          .container.about__container
-            .about__left
-              .user
-                .avatar.user__avatar
-                  +image("content/user.jpg", "avatar__pic--user")
-                ul.user__desc
-                  -
-                    var items = [
-                      ["Проживаю", "Осло"],
-                      ["Возраст", "30"],
-                      ["Родился", "23.11.1988"]
-                    ]
-                  each item in items  
-                    li.user__desc-item
-                      .user__key #{item[0]}
-                      .user__value #{item[1]}
-            .about__right
-              h4.about__prolog Привет, меня зовут
-              h2.about__title Galina Kisseleva
-              .about__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-              .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-      .triangles
-        svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
-          polygon(points="0,0 0,100 1000,100")
-        svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
-          polygon(points="0,100 1000,100 1000,0")
+            .container.about__container
+              .about__left
+                .user
+                  .avatar.user__avatar
+                    +image("content/user.jpg", "avatar__pic--user")
+                  ul.user__desc
+                    -
+                      var items = [
+                        ["Проживаю", "Осло"],
+                        ["Возраст", "30"],
+                        ["Родился", "23.11.1988"]
+                      ]
+                    each item in items  
+                      li.user__desc-item
+                        .user__key #{item[0]}
+                        .user__value #{item[1]}
+              .about__right
+                h4.about__prolog Привет, меня зовут
+                h2.about__title Galina Kisseleva
+                .about__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .triangles
+          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,0 0,100 1000,100")
+          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,100 1000,100 1000,0")
       .values
         .container.values__container
           .values__left
@@ -148,6 +164,8 @@ html(lang="en")
                   .iconed-link__icon
                     +icon(`link`, "link__icon")
                   .iconed-link__text Посмотреть сайт
+      
+        
       .end-section
         section.reviews
           .container.reviews__section
