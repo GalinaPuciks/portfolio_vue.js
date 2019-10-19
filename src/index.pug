@@ -9,226 +9,227 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      section.parallax
-        .parallax__layer(data-speed="0.1")
-          +image("content/parallax/Sky.png", "parallax__image")
-        .parallax__layer(data-speed="0.13")
-          +image("content/parallax/Mountain.png", "parallax__image")
-        .parallax__layer(data-speed="0.16")
-          +image("content/parallax/Baloon.png", "parallax__image")
-        .parallax__layer(data-speed="0.2")
-          +image("content/parallax/Cloud.png", "parallax__image")
-        .parallax__layer(data-speed="0.23")
-          +image("content/parallax/Man.png", "parallax__image")
-        .parallax__layer(data-speed="0.25")
-          +image("content/parallax/Mountain1.png", "parallax__image")
-        .parallax__layer(data-speed="0.28")
-          +image("content/parallax/White.png", "parallax__image")
-        //-.parallax__layer--static(data-speed="0.28")
-          +image("content/Baloon.png", "parallax__image--static")
-      
+      .maincontent
         .welcome-section
-          section.hero
-            .container.hero__container
-              header.hero__header
-                .hero__logo
-                  .logo BA
-                .hero__menu
-                  nav.nav
-                    - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
-                    ul.nav__list
-                      each item in menu
-                        li.nav__item
-                          a(href="").nav__link #{item}
-                .hero__links
-                  - var icons = ["insta", "vk", "github"]
-                  ul.sosials
-                    each item in icons
-                      li.sosials__item
-                        a(href="").sosials__link
-                          +icon(`${item}`, "sosials__icon")
-                a.gamburger-menu-link(href="")
-                  .gamburger-menu-link__bars
-              .hero__content
-                .user-info
-                  h1.user-info__desc Личный сайт веб разработчика
-                  .user-info__username Galina Kisseleva
-              .hero__btns
-                a(href="").scroll__link
-                  .scroll-down-btns Скролл
-                  +icon(`scroll`, "scroll_img")
-                      
-                        
+          section.parallax
+              .parallax__layer(data-speed="0.1")
+                +image("content/parallax/Sky.png", "parallax__image")
+              .parallax__layer(data-speed="0.13")
+                +image("content/parallax/Mountain.png", "parallax__image")
+              .parallax__layer(data-speed="0.16")
+                +image("content/parallax/Baloon.png", "parallax__image")
+              .parallax__layer(data-speed="0.2")
+                +image("content/parallax/Cloud.png", "parallax__image")
+              .parallax__layer(data-speed="0.23")
+                +image("content/parallax/Man.png", "parallax__image")
+              .parallax__layer(data-speed="0.25")
+                +image("content/parallax/Mountain1.png", "parallax__image")
+              .parallax__layer(data-speed="0.28")
+                +image("content/parallax/White.png", "parallax__image")
+          section.fullscreen-section.hero
+              .container.hero__container
+                header.header
+                  .header__logo
+                    a.logo(href="") ВА
+                  .header__menu 
+                    nav.menu
+                      ul.menu__list
+                        - var menuLinks = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
+                        each item in menuLinks 
+                          li.menu__item
+                            a(href="#").menu__link #{item}
+                  .header__buttons
+                    ul.socials
+                      - var socials = ['insta', 'vk', 'github'];
+                    each item in socials
+                      li.socials__item
+                        a(href="#").socials__link
+                          +icon(item, 'socials__icon')
+                  a.gamburger-menu-link
+                    .gamburger-menu-link__bars
 
-                      
+                .hero__content
+                  .userinfo
+                    .userinfo__title Личный сайт #[span.userinfo__occ веб разработчика]
+                    .userinfo__name Galina Kisseleva
+                .hero__downbutton
+                  .scroll-down
+                    a(href="").scroll-down__btn Скролл
+                     
           section.about
-
-            .container.about__container
-              .about__left
-                .user
-                  .avatar.user__avatar
-                    +image("content/user.jpg", "avatar__pic--user")
-                  ul.user__desc
-                    -
-                      var items = [
-                        ["Проживаю", "Осло"],
-                        ["Возраст", "30"],
-                        ["Родился", "23.11.1988"]
-                      ]
-                    each item in items  
-                      li.user__desc-item
-                        .user__key #{item[0]}
-                        .user__value #{item[1]}
-              .about__right
-                h4.about__prolog Привет, меня зовут
-                h2.about__title Galina Kisseleva
-                .about__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-        .triangles
-          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
-            polygon(points="0,0 0,100 1000,100")
-          svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
-            polygon(points="0,100 1000,100 1000,0")
-      .values
-        .container.values__container
-          .values__left
-            +image("content/sekken.png", "sekken__pic")
-          .values__right
-            .values__title
-              h2.section-title.values__title-text Чем я могу быть вам полезен
-              .values__desc
-                p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-
-            ul.user-skills
-            
-
-              - 
-                var skills = [
-                  ['Front-end', ['HTML5', 'CSS', 'Javascript', 'Jquery и Vue.js']],
-                  ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
-                ]
-              each item in skills 
-                li.user-skills__item.skills-row 
-                  h3.skills-row__title #{item[0]}
-                  ul.skills-row__list
-                    each skill in item[1]
-                      li.skills-row__item
-                        .skill
-                          svg(viewBox="0 0 100 100" preserveAspectRatio="none" fill="transparent").skill__shape
-                            circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--under
-                            circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--above
-                            linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                              stop(offset="0%" stop-color= "#7900ea")
-                              stop(offset="100%" stop-color= "#4e00ed")
-                          .skill__title #{skill}
-
-                    
-      section.works
-        .container.works__container
-          h2.section-title__works Мои работы
-          .works__main
-            .works__left
-    
-                .slider
-                  +image("content/preview__big.jpg", "slider__fullpic")
-                .slider__preview
-                  ul.previews
-                    li.previews__item
-                      +image("content/preview_1.png", "preview__item--pic")
-                    li.previews__item
-                      +image("content/preview_2.png", "preview__item--pic")
-                    li.previews__item
-                      +image("content/preview_3.png", "preview__item--pic")
-                .slider__buttons
-                  .slider-button
-                    button.slider-buttons__item.slider-buttons__item--slide--prev
-                      +icon(`arrow-down`, "slider_arrow--prev")
-                    button.slider-buttons__item.slider-buttons__item--slide--next
-                      +icon(`arrow-down`, "slider_arrow--next")
-
-            .works__right
-              
-              ul.works__tags
-                li.tags
-                  .tags__item HTML
-                li.tags
-                  .tags__item CSS
-                li.tags
-                  .tags__item JavaScript
-              .works__text
-                h3.works__title Сайт школы образования
-                .works__desc-text
-                  .number 4
-                  p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                a.iconed-link
-                  .iconed-link__icon
-                    +icon(`link`, "link__icon")
-                  .iconed-link__text Посмотреть сайт
-      
-        
-      .end-section
-        section.reviews
-          .container.reviews__section
-            .reviews__title
-              h2.section-title Что обо мне говорят
-              .slider__links
-                button.slider__links--btn--left
-                  a(href="")
-                    svg.left__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill= "#464d62")
-                      polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		 		")
-                
+            .container
+              .about__columns
+                .about__user
+                  .user
+                    .user__avatar
+                      .user__avatar-wrapper
+                        +image('content/user.jpg', 'user__avatar-pic')
+                    .user__about
+                      - 
+                        var userinfo = [
+                          ['Проживаю:', "Oslo"],
+                          ['Возраст:', "30 лет"],
+                          ['Родился:', "23 ноября 1988"],
+                        ];
+                      table.user__table
+                        each item in userinfo
+                          tr
+                            td.user__table-title #{item[0]}
+                            td.user__table-content #{item[1]}
+                .about__user-text
+                  .about__main-text-content
+                    .about__desc Привет, меня зовут
+                    .about__title Galina Kisseleva
+                    .about__text-info
+                      p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                  .about__ps
+                    | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+      .triangles
+            svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+              polygon(points="0,0 0,100 1000,100")
+            svg.triangles__item(viewBox="0 0 1000 100" preserveAspectRatio="none")
+              polygon(points="0,100 1000,100 1000,0")
+      .middle-section
+        section.values
+          .container.values__container
+            .values__wrapper
+              .values__title
+                .values__title-container
+                  .values__title-text Чем я могу быть полезен вам
+                  .values__content
+                    p  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                   
-                button.slider__links--btn--right
-                  a(href="")
-                    svg.right__arrow(viewBox= "0 0 306 306" preserveAspectRatio="none" fill="#464d62")
-                      polygon(points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		")
-                
-            .reviews__menu
-              .reviews__desc--left
-                .reviews__dest--info
-                  .reviews__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                  +icon(`quote`, "quote__icon")
-                .reviews__author
-                  .reviews__author--pic
-                    +image("content/kovalchuk.jpg", "author__pic")
-                  .reviews__author--desc
-                    h4.reviews__author--name Ковальчук Дмитрий
-                    .reviews__author--position Основатель Loftschool
-              .reviews__desc--right
-                .reviews__dest--info
-                  .reviews__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                  +icon(`quote`, "quote__icon")
-                .reviews__author
-                  .reviews__author--pic
-                    +image("content/vladimir.jpg", "author__pic")
-                  .reviews__author--desc
-                    h4.reviews__author--name Ковальчук Дмитрий
-                    .reviews__author--position Основатель Loftschool
+              .values__widget
+                ul.user-skills
+                  - 
+                    var skills = [
+                      ['Front-end', ['HTML5', 'CSS', 'Javascript', 'Jquery и Vue.js']],
+                      ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
+                    ]
+                  each item in skills 
+                    li.user-skills__item.skills-row 
+                      h3.skills-row__title #{item[0]}
+                      ul.skills-row__list
+                        each skill in item[1]
+                          li.skills-row__item
+                            .skill
+                              svg(viewBox="0 0 100 100" preserveAspectRatio="none" fill="transparent").skill__shape
+                                circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--under
+                                circle(r="40" cx="50" cy="50" ).skill__circle.skill__circle--position--above
+                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                                  stop(offset="0%" stop-color= "#7900ea")
+                                  stop(offset="100%" stop-color= "#4e00ed")
+                              .skill__title #{skill}
 
+                      
+        section.works
+          .container.works__container
+            h2.section-title__works Мои работы
+            .works__main
+              .works__left
+      
+                  .slider
+                    .number 4
+                    +image("content/preview__big.jpg", "slider__fullpic")
+                    .slider__preview
+                      ul.previews
+                        li.previews__item
+                          +image("content/preview_1.png", "preview__item--pic")
+                        li.previews__item
+                          +image("content/preview_2.png", "preview__item--pic")
+                        li.previews__item
+                          +image("content/preview_3.png", "preview__item--pic")
+                  .slider__buttons
+                      
+                      .slider-button
+                        button.slider-buttons__item.slider-buttons__item--slide--prev
+                          +icon(`arrow-down`, "slider_arrow--prev")
+                        button.slider-buttons__item.slider-buttons__item--slide--next
+                          +icon(`arrow-down`, "slider_arrow--next")
+                  
+
+              .works__right
+                
+                ul.works__tags
+                  li.tags
+                    .tags__item HTML
+                  li.tags
+                    .tags__item CSS
+                  li.tags
+                    .tags__item JavaScript
+                .works__text
+                  h3.works__title Сайт школы образования
+                  .works__desc-text
+                  
+                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                  a.iconed-link
+                    .iconed-link__icon
+                      +icon(`link`, "link__icon")
+                    .iconed-link__text Посмотреть сайт
+        
+          
         section.contacts
-          .container.main__contacts
-            h2.section-title--contact Связаться со мной
-            form.contacts__form
-              .main__contacts--data
-                label.contact--data--name
-                  .contact--data--label Введите ваше имя
-                  .contact--desc
-                    +icon('avatar', "avatar__pic")
-                    input.contact--data--input(placeholder="loftschool@study.com") 
-                label.contact--data--mail
-                  .contact--data--label Введите ваш e-mail
-                  .contact--desc
-                    +icon('envelope', "avatar__pic")
-                    input.contact--mail--input(placeholder="loftschool@study.com") 
-              .main__contact--demand
-                label.contact--data--demand
-                  .contact--data--label Сообщение к письму
-                  .contact--desc
-                    +icon('chat', "avatar__pic")
-                    input.contact--demand--input(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса")
-              .button__box
-                button.send__button(type="submit").gradient__button отправить
-      footer.contact__footer
+            .container.contacts__container
+              .contacts__about
+
+
+                  .reviews__content--wrapper
+                    .reviews__header
+                      .reviews__title.section-title Что обо мне говорят
+                      ul.reviews__buttons
+                        li.reviews__btn
+                        li.reviews__btn
+                    ul.reviews__content
+                      li.review__content-item
+                        .reviews__desc
+                          p  Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                          .reviews__author
+                            .reviews__author--pic
+                              +image("content/vladimir.jpg", "author__pic")
+                            .reviews__author--desc
+                              h4.reviews__author--name Ковальчук Дмитрий
+                              .reviews__author--position Основатель Loftschool
+                      li.review__content-item
+                        .reviews__desc
+                          p  Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                          .reviews__author
+                            .reviews__author--pic
+                              +image("content/vladimir.jpg", "author__pic")
+                            .reviews__author--desc
+                              h4.reviews__author--name Ковальчук Дмитрий
+                              .reviews__author--position Основатель Loftschool
+              .contacts__form
+                .form
+                  .section-title.contacts__form-title Связаться со мной
+                  form.form__elem
+                    .form__row
+                      - 
+                        var fields = [
+                          ['user', 'Введите ваше имя', 'Ковальчук Дмитрий'],
+                          ['envelope', 'Введите ваш email', 'loftschool@study.com'],
+                        ]
+                      each item in fields
+                        label.form-block(data-title=item[1])
+                          .form-block__container
+                            +icon(`${item[0]}`, 'form-block__icon') 
+                            .form-block__field
+                              input(type="text" placeholder=item[2]).form-block__input
+                    .form__row.form__row--extra-margin
+                      label.form-block(data-title="Сообщение к письму")
+                        .form-block__container.form-block__container_align_top
+                          +icon('message', 'form-block__icon') 
+                          .form-block__field
+                            textarea(
+                              placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса"
+                            ).form-block__input
+                    .from__row
+                      input(type="submit" value="отправить").gradient-btn.form__submit
+
+
+
+
+          
+        footer.contact__footer
             .container.footer__container
               .footer__main--info
                 .year__data ©2019

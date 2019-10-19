@@ -1,93 +1,31 @@
 .hero {
-    height: 100vh;
-}
-
-.hero__container {
+    padding-top: 54px;
+    position: relative;
+  }
+  
+  .hero__container {
     display: flex;
+    flex-direction: column;
     height: 100%;
-    flex-direction: column;
-}
-
-.hero__header {
+  }
+  
+  .hero__content {
+    flex: .8;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.hero__menu {
-    margin: 0 20px;
-}
-
-.hero__header {
-    padding-top: 40px;
-}
-
-.hero__content {
-    display: flex;
-    flex: 1;
-    align-items: center;
     justify-content: center;
-}
-
-.hero__btns {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-}
-
-.hero__logo {
-color: #464d62;
-font-size: 36px;
-font-weight: 800;
-line-height: 30px;
-}
-
-
-
-.user-info__desc {
-color: rgba(#464d62, .4) ;
-font-size: 18px;
-font-weight: 600;
-line-height: 30px;
-display: flex;
-justify-content: center;
-width: 161px;
-}
-
-.user-info__username {
-color: #464e62;
-font-size: 72px;
-font-weight: 800;
-line-height: 60px;
-width: 408px;
-}
-
-.welcome-section {
-    //@include tablets {
-    //background-image: url(../images/content/Baloon.jpg);
-    background-size: cover;
+    padding: 0 24%;
+  
+    @include desktop {
+      padding: 0 10%;
+    }
+  }
+  
+  .hero__downbutton {
     position: absolute;
-    left: 10%;
-}
-
-
-.user-info {
+    bottom: 4%;
+    left: 0;
+    right: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.scroll_img {
-    width: 25px;
-    height: 30px;
-}
-
-.scroll__link {
-    display: flex;
-
-}
-
-.scroll-down-btns {
-    margin-right: 20px;
-}
+    justify-content: center;
+  }
