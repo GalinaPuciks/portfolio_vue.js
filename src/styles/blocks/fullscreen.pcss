@@ -1,0 +1,33 @@
+.fullscreen {
+    background: white;
+    z-index: 10;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.hamburger-menu-close__bars:after {
+    content: "";
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    width: 1.5rem;
+    height: 0.3125rem;
+    border-radius: 0.1875rem;
+}
+
+.hamburger-menu-close__bars:before {
+    content: "";
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    width: 1.5rem;
+    height: 0.3125rem;
+    border-radius: 0.1875rem;
+}
+
+.hamburger-menu-close__bars {
+    background-color: black;
+}
