@@ -10,7 +10,7 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        .welcome-section
+        .welcome-section#home
           section.parallax
               .parallax__layer(data-speed="0.1")
                 +image("content/parallax/Sky.png", "parallax__image")
@@ -20,9 +20,9 @@ html(lang="en")
                 +image("content/parallax/Baloon.png", "parallax__image")
               .parallax__layer(data-speed="0.2")
                 +image("content/parallax/Cloud.png", "parallax__image")
-              .parallax__layer(data-speed="0.23")
+              .parallax__layer(data-speed="0")
                 +image("content/parallax/Man.png", "parallax__image")
-              .parallax__layer(data-speed="0.16")
+              .parallax__layer(data-speed="0")
                 +image("content/parallax/Mountain1.png", "parallax__image")
               .parallax__layer(data-speed="0.1")
                 +image("content/parallax/White.png", "parallax__image")
@@ -31,7 +31,8 @@ html(lang="en")
                 header.header
                   .header__logo
                     a.logo(href="") ВА
-                  .header__menu 
+                  .header__menu: vc-Menu
+                    
                     nav.menu
                       ul.menu__list
                         - var menuLinks = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
@@ -56,7 +57,7 @@ html(lang="en")
                   .scroll-down
                     a(href="").scroll-down__btn Скролл
                      
-          section.about
+          section.about#about
             .container
               .about__columns
                 .about__user
@@ -90,7 +91,7 @@ html(lang="en")
           svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
             polygon(points="0,100 1000,100 1000,0")
       .middle-section
-        section.values
+        section.values#skills
           .container.values__container
             .values__wrapper
               .values__title
@@ -102,7 +103,7 @@ html(lang="en")
               .values__widget
                 #skills-component
     
-        section.works
+        section.works#works
           .container.works__container
             .section-title.works__section-title Мои работы
             .works__content
@@ -117,12 +118,14 @@ html(lang="en")
           
       section.contacts
         section.parallax__budda-section
-          .parallax__layer__budda(data-speed="0.13")
+          .parallax__layer__budda(data-speed="0.15")
             +image("content/parallax/background__budda.png", "parallax__budda-image")
           .parallax__layer__budda(data-speed="0")
             +image("content/parallax/mountain__budda.png", "parallax__budda-image")
-          .parallax__layer__budda(data-speed="0.3")
+          .parallax__layer__budda(data-speed="0.2")
             +image("content/parallax/budda__budda.png", "parallax__budda-image")
+          .parallax__layer__budda(data-speed="0.4")
+            +image("content/parallax/Cloud.png", "parallax__budda-image")
           .parallax__layer__budda(data-speed="0")
             +image("content/parallax/cloud__budda.png", "parallax__budda-image")
           .parallax__layer__budda(data-speed="0")
@@ -142,7 +145,7 @@ html(lang="en")
                       button(type='button', class=`btn btn--reviews`)
               .reviews__carousel: vc-carousel-wrap
                 
-        .contacts__form.container
+        .contacts__form.container#feedback
           .form
             .section-title.contacts__form-title Связаться со мной
             form.form__elem

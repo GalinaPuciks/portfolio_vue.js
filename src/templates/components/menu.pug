@@ -1,0 +1,6 @@
+
+script(type="text/x-template")#menu-template
+    nav.menu
+        ul.menu__list
+            li(v-for="item in menu" :key="item.text").menu__item
+                a(:href="item.href", class='menu__link', v-scroll-to="item.href") {{item.text}}
