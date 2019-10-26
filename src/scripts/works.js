@@ -79,8 +79,8 @@ new Vue({
   methods: {
     makeInfiniteLoopForCurIndex(value) {
       const worksAmount = this.works.length - 1;
-      if (value > worksAmount) this.currentIndex = 0;
-      if (value < 0) this.currentIndex = worksAmount;
+      if (value > worksAmount) this.currentIndex = 2;
+      if (value < 0) this.currentIndex = 0;
     },
     makeArrWithRequiredImages(data) {
       return data.map(item => {

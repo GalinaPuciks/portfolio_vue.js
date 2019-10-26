@@ -1,5 +1,10 @@
-script(type="text/x-template")#carousel-template
-  carousel(:navigationEnabled="true" :paginationEnabled="false").reviews-carousel__list
+script(type="text/x-template")#reviews-carousel-template
+  carousel(
+      :perPageCustom="[[0, 1], [769, 2]]"
+      :navigationEnabled="true"
+      :paginationEnabled="false"
+      @pageChange="pageChange"
+    ).reviews-carousel__list
     slide(v-for="review in reviews" :key="review.id").reviews-carousel__item
       vc-quote(:review="review")
 
@@ -14,3 +19,4 @@ script(type="text/x-template")#slide-template
         .user__info
           .user__name {{ review.author }}
           .user__position {{ review.occ }}
+          .reviews__carousel: vc-reviews-carousel

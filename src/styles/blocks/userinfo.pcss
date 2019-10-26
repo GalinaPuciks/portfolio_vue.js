@@ -1,5 +1,7 @@
 .userinfo {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
     @include desktop {
       display: flex;
       text-align: left;
@@ -12,6 +14,8 @@
   }
   
   .userinfo__title {
+    display: flex;
+    flex-direction: column;
     font-size: 18px;
     color: rgba($text-color, .4);
     font-weight: 600;
@@ -37,6 +41,7 @@
   }
   
   .userinfo__name {
+    width: 408px;
     font-weight: 800;
     font-size: 72px;
     line-height: 1;

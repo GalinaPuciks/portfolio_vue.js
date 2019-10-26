@@ -30,7 +30,7 @@ html(lang="en")
               .container.hero__container
                 header.header
                   .header__logo
-                    a.logo(href="") ВА
+                    a.logo(href="") GK
                   .header__menu: vc-Menu
                     
                     nav.menu
@@ -46,8 +46,8 @@ html(lang="en")
                       li.socials__item
                         a(href="#").socials__link
                           +icon(item, 'socials__icon')
-                  a.gamburger-menu-link
-                    .gamburger-menu-link__bars
+                    a.gamburger-menu-link
+                      .gamburger-menu-link__bars
 
                 .hero__content
                   .userinfo
@@ -64,7 +64,7 @@ html(lang="en")
                   .main__user
                     .user__avatar
                       .user__avatar-wrapper
-                        +image('content/user.jpg', 'user__avatar--pic')
+                        +image('content/user1.jpg', 'user-avatar--pic')
                     .user__about
                       - 
                         var userinfo = [
@@ -118,7 +118,7 @@ html(lang="en")
           
       section.contacts
         section.parallax__budda-section
-          .parallax__layer__budda(data-speed="0.15")
+          .parallax__layer__budda(data-speed="0")
             +image("content/parallax/background__budda.png", "parallax__budda-image")
           .parallax__layer__budda(data-speed="0")
             +image("content/parallax/mountain__budda.png", "parallax__budda-image")
@@ -139,11 +139,11 @@ html(lang="en")
                 h2.title.reviews__title Что обо мне говорят
                 .reviews__controls
                   ul.controls.controls--reviews
-                    li(@click="slide('prev')").controls__item.prev
-                      button(type='button', class=`btn btn--reviews`)
-                    li(@click="slide('next')").controls__item
-                      button(type='button', class=`btn btn--reviews`)
-              .reviews__carousel: vc-carousel-wrap
+                    li(@click="prev").controls__item.prev
+                      button(type='button', class=`btn btn--reviews`, :disabled="activePage === 0")
+                    li(@click="next").controls__item
+                      button(type='button', class=`btn btn--reviews`, :disabled="activePage === pages")
+              
                 
         .contacts__form.container#feedback
           .form
@@ -170,7 +170,7 @@ html(lang="en")
                         placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса"
                       ).form-block__input
               .from__row
-                input(type="submit" value="отправить").gradient-btn.form__submit
+                button(type="submit" ).gradient-btn.form__submit Отправить
 
 
 
@@ -209,7 +209,25 @@ html(lang="en")
                   .text-quote__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
                   .text-quote__author Martin Golding
-    
+    .block-section
+      .block-menu
+        a.gamburger-menu-close(href='')
+          .gamburger-menu-close__bars
+        ul.menu__list-block
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='1') About 
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='2') About
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='3') About
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='4') About
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='5') About
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='6') About
+          li.menu__item-block
+            a.menu__link-block(href='' data-scroll-to='7') About
           
     include ./templates/entry.pug
 

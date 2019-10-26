@@ -75,5 +75,13 @@
     width: 25px;
     height: 25px;
     fill: $text-color;
+    &:hover {
+      fill: $links-color;
+    }
   }
 
+  .socials__link {
+    @include phones {
+      display: none;
+    }
+  }

@@ -1,70 +1,57 @@
-import Vue from 'vue';
-import { Carousel, Slide } from 'vue-carousel';
-import axios from 'axios';
+import {Carousel, Slide} from 'vue-carousel';
+import EventBus from './eventBus';
+import xhr from './xhrRequests';
+import Quote from './quote';
 
-const EventBus = new Vue();
 
-axios.defaults.baseURL = 'https://webdev-api.loftschool.com/';
 
-const Quote = {
-  template: "#slide-template",
-  props: {
-    review: Object
-  }
-};
-
-const CarouselWrap = {
-  template: '#carousel-template',
-  components: {
-    vcQuote: Quote,
-    Carousel,
-    Slide
-  },
+export default {
+  template: '#reviews-carousel-template',
   data() {
     return {
-      reviews: []
+      reviews: [],
+      slidesPerPage: 2
+    };
+  },
+  methods: {
+    pageChange(number) {
+      EventBus.$emit('activePage', number);
+    },
+    pages() {
+      if (this.slidesPerPage > 1) {
+        return this.reviews.length % 2 === 1 ? (this.reviews.length - 1) / 2 : (this.reviews.length / 2 - 1);
+      }
+      return this.reviews.length - 1;
+    },
+    calcSlidesPerPage(self) {
+      function calc() {
+        self.slidesPerPage = (window.innerWidth <= 768) ? 1 : 2;
+      }
+      calc();
+      window.addEventListener('resize', calc);
     }
   },
+  components: {
+    Carousel,
+    Slide,
+    vcQuote: Quote
+  },
   mounted() {
-    axios({
-      method: 'get',
-      url: 'reviews/174'
-    })
-      .then(({ data }) => data)
+    this.calcSlidesPerPage(this);
+    xhr('get', 'reviews/174')
       .then(reviews => {
         return reviews.map(review => {
           return (review.photo = 'https://webdev-api.loftschool.com/' + review.photo) && review;
         });
       })
       .then(reviews => this.reviews = reviews)
-      .catch(error => {
-        console.log(error);
-      })
-      .finally(() => {
-        console.log(this.reviews);
+      .then(() => {
+        EventBus.$emit('pages', this.pages());
       });
-
-    EventBus.$on('slide', direction => {
-      switch (direction) {
-        case "prev" :
-          document.querySelector('.VueCarousel-navigation-prev').click();
-          break;
-        case "next" :
-          document.querySelector('.VueCarousel-navigation-next').click();
-          break;
-      }
-    })
-  }
-};
-
-new Vue({
-  el: '#reviews',
-  components: {
-    vcCarouselWrap: CarouselWrap
   },
-  methods: {
-    slide(direction) {
-      EventBus.$emit('slide', direction);
+  watch: {
+    slidesPerPage() {
+      EventBus.$emit('pages', this.pages());
     }
   }
-});
+};
