@@ -16,6 +16,12 @@
   }
 }
 
+@mixin mini() {
+  @media screen and (max-width: $mini) {
+    @content;
+  }
+}
+
 
 
 @mixin phones() {

@@ -12,10 +12,7 @@ const width = screen.availwidth;
         blockS.style.right = 0;
         });
         
-        blockS.addEventListener('click', function (directionSite) {
-           directionSite.preventDefault();
-           blockS.style.display = 'none';
-          });
-
-
+       
+ 
+ 
 
