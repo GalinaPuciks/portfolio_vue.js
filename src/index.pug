@@ -143,7 +143,7 @@ html(lang="en")
                       button(type='button', class=`btn btn--reviews`, :disabled="activePage === 0")
                     li(@click="next").controls__item
                       button(type='button', class=`btn btn--reviews`, :disabled="activePage === pages")
-              
+              .reviews__carousel: vc-reviews-carousel
                 
         .contacts__form.container#feedback
           .form
@@ -213,21 +213,28 @@ html(lang="en")
       .block-menu
         a.gamburger-menu-close(href='')
           .gamburger-menu-close__bars
-        ul.menu__list-block
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='1') About 
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='2') About
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='3') About
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='4') About
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='5') About
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='6') About
-          li.menu__item-block
-            a.menu__link-block(href='' data-scroll-to='7') About
+        .modal__wrapper
+          ul.menu__list-block
+            li.menu__item-block
+              a.menu__link-block(href='' data-scroll-to='1') Главная 
+            li.menu__item-block
+              a.menu__link-block(href='' data-scroll-to='2') Обо мне
+            li.menu__item-block
+              a.menu__link-block(href='' data-scroll-to='3') Навыки
+            li.menu__item-block
+              a.menu__link-block(href='' data-scroll-to='4') Работы
+            li.menu__item-block
+              a.menu__link-block(href='' data-scroll-to='5') Отзывы
+            li.menu__item-block
+              a.menu__link-block(href='' data-scroll-to='6') Связаться
+          .header__buttons
+                    ul.socials
+                      - var socials = ['insta', 'vk', 'github'];
+                    each item in socials
+                      li.socials__item
+                        a(href="#").socials__link
+                          +icon(item, 'socials__icon')
+      
           
     include ./templates/entry.pug
 

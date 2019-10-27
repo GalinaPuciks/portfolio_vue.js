@@ -67,5 +67,3 @@ new Vue({
 });
 
 ////////////////////////////////////////////////////
-import Vuelidate from 'vue'
-Vue.use(Vuelidate)

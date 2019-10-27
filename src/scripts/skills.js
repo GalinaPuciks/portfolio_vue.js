@@ -55,7 +55,7 @@ new Vue ({
     }),
     components: {skillsRow},
     created () {
-        this.skills = data;
+        //this.skills = data;
     }
 });
 

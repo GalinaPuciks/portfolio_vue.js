@@ -2,11 +2,17 @@
     background: white;
     z-index: 10;
     display: none;
-    left: 0;
-    right: 0;
+    //left: 0;
+    right: -100%;
     top: 0;
     bottom: 0;
     position: fixed;
+    width: 320px;
+    display: flex;
+    transition: right .5s ease-in;
+    @include phones {
+        width: 100vw;
+    }
 }
 .gamburger-menu-close__bars {
     background-color: black;
@@ -68,4 +74,38 @@
 	&:after {
 		transform: rotate(-45deg);
 	}
+}
+
+.modal__wrapper {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 18%;
+    text-align: center;
+    padding-top: 70px;
+}
+
+.menu__list-block {
+    color: #464d62;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 3rem;
+    margin-bottom: 30px;
+}
+
+.block-menu {
+    display: contents;
+}
+
+.menu__link-block:hover {
+ color: $links-color;
+ transition: color .3s ease-in;
 }

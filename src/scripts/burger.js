@@ -9,6 +9,7 @@ const width = screen.availwidth;
         event.preventDefault();
         wrapper.classList.add('hidden');
         blockS.style.display = 'flex';
+        blockS.style.right = 0;
         });
         
         blockS.addEventListener('click', function (directionSite) {

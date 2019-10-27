@@ -8,7 +8,7 @@ script(type="text/x-template")#reviews-carousel-template
     slide(v-for="review in reviews" :key="review.id").reviews-carousel__item
       vc-quote(:review="review")
 
-script(type="text/x-template")#slide-template
+script(type="text/x-template")#quote-template
   .quote
     .quote__text
       p {{ review.text }}
@@ -19,4 +19,3 @@ script(type="text/x-template")#slide-template
         .user__info
           .user__name {{ review.author }}
           .user__position {{ review.occ }}
-          .reviews__carousel: vc-reviews-carousel
