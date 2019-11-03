@@ -1,0 +1,75 @@
+
+.root-container {
+    background: url(../images/content/Baloon.jpg) center top no-repeat / cover;
+    position: relative;
+    min-height: 100vh;
+    
+       &:before{ 
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background-color: rgba(255, 255, 255, 0.9);
+              }
+    }
+
+section {
+    position: relative;
+}
+
+.page-item:hover {
+    background-color: white;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    opacity: 1;
+  
+    
+}
+.field-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-block {
+    display: flex;
+}
+
+.btn-redact {
+    fill: blue;
+}
+
+.btn-delete {
+    fill:red;
+}
+
+.btn__column{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.field-content {
+    margin-bottom: 100px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.field-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .field-box-shadow {
+      background-color: white;
+      box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+  }
+
+  .page-string {
+      margin-bottom: 100px;
+      &:nth-last-child {
+          margin-bottom: 0;
+      }
+  }

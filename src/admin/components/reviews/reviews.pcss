@@ -1,0 +1,164 @@
+.form-block {
+    margin-right: 50px;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 14px;
+    flex: 1;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:before {
+      content: attr(data-title);
+      margin-bottom: 21px;
+      display: block;
+      font-weight: 600;
+      color: rgba($text-color, .3);
+      //margin-left: 50px;
+    }
+  
+  
+    
+  }
+  
+  .form-block__container {
+    display: flex;
+    align-items: center;
+  
+    &_align_top {
+      align-items: flex-start;
+    }
+  }
+  
+  .form-block__icon {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+    opacity: .3;
+    margin-right: 16px;
+  }
+  
+  .form-block__field {
+    flex: 1;
+  }
+  
+  .form-block__input {
+    background: transparent;
+    border: 0 none;
+    width: 100%;
+    &::placeholder {
+      color: currentColor;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  }
+
+
+
+  .form__row {
+    margin-bottom: 38px;
+    display: flex;
+  
+   
+  
+    &--extra-margin {
+      margin-bottom: 60px;
+   
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .gradient-btn.form__submit {
+    
+  }
+
+  .contacts__form {
+    position: inherit;
+  }
+
+  .contacts__form-title {
+color: #464d62;
+font-size: 36px;
+font-weight: 700;
+line-height: 48px;
+margin-bottom: 70px;
+  }
+
+  .form__elem {
+    display: flex;
+    padding-top: 40px;
+  }
+
+
+  ////////////////////////////
+  .btn-link {
+    font-size: 0;
+    display: flex;
+    align-items: center;
+
+  
+  
+  
+    &:before {
+      content: '';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 300;
+      border-radius: 50%;
+      font-size: 72px;
+      width: 150px;
+      height: 150px;
+      color: #fff;
+      //border: 2px solid white;
+      background-image: svg-load("user-new.svg", fill=#fff);
+    
+    }
+  }
+  
+  .btn-link-pic { 
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 2;
+  
+  
+  }
+  
+  .btn-link.btn-link-pic {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-form__btns {
+      display: flex;
+  }
+
+
+  .page-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+
+
+
+  .page-item {
+    flex-basis: calc(100% / 3 - 30px);
+    margin-left: 30px;
+    margin-bottom: 30px;
+    background-color: #fff
+
+  }
+.reviews-pic {
+    margin-right: 10px;
+}
+
+.reviews-text {
+    padding-top: 20px;
+}

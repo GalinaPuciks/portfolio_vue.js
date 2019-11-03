@@ -1,0 +1,154 @@
+.root-container
+  section.reviews
+    .container.page-container
+      .page-header
+        .page-info
+          h1.page-title Блок «Отзывы»
+      .main-content
+        .page-string
+          .field.field-box-shadow
+            .field-header
+              .field-info
+                .about-field-title Новый отзыв
+            .field-content
+              form.form__elem
+                .form-column
+                  button(type="button").btn
+                    label.btn.btn-link.btn-link-pic Добавить фото
+                .form-column
+                  .form__row
+                    - 
+                      var fields = [
+                        ['user', 'Имя автора', 'Ковальчук Дмитрий'],
+                        ['envelope', 'Титул автора', 'Основатель Loftschool'],
+                      ]
+                    each item in fields
+                      label.form-block(data-title=item[1])
+                        .form-block__container
+                          
+                          .form-block__field
+                            input(type="text" placeholder=item[2]).form-block__input
+                  .form__row.form__row--extra-margin
+                    label.form-block(data-title="Отзыв")
+                      .form-block__container.form-block__container_align_top
+                        
+                        .form-block__field
+                          textarea(
+                            placeholder="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
+                          ).form-block__input
+                  .from__row
+                    .field-buttons.add-form-buttons
+                      .action-button
+                        button(type="reset").btn.btn-cancel Отмена
+                      .action-button
+                        button(type="submit").btn.btn-save Сохранить
+        .page-string
+          ul.page-list.reviews-list
+            li.page-item.reviews-item.add-new-item
+              .field.field-add
+                button(type="button").btn.button-add-main.main-page-button Добавить Отзыв
+            
+              li.page-item.reviews-item
+                .field
+                  .field-header
+                    .user
+                      .user-block
+                        img(src=`../../../images/content/kovalchuk.jpg`).reviews-pic
+                      .user-block
+                        .user-text.user-name Владимир Сабанцев
+                        .user-text.user-position Преподаватель
+                  .field-content
+                    .reviews-text
+                      p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  .field-footer
+                    .field-buttons
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Править
+                          .btn__column
+                            svg(width="17" height="17").btn-redact
+                              use(xlink:href="sprite.svg#pencil")
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Удалить
+                          .btn__column
+                            svg(width="15" height="15").btn-delete
+                              use(xlink:href="sprite.svg#cross")
+            li.page-item.reviews-item
+                .field
+                  .field-header
+                    .user
+                      .user-block
+                        img(src=`../../../images/content/kovalchuk.jpg`).reviews-pic
+                      .user-block
+                        .user-text.user-name Владимир Сабанцев
+                        .user-text.user-position Преподаватель
+                  .field-content
+                    .reviews-text
+                      p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  .field-footer
+                    .field-buttons
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Править
+                          .btn__column
+                            svg(width="17" height="17").btn-redact
+                              use(xlink:href="sprite.svg#pencil")
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Удалить
+                          .btn__column
+                            svg(width="15" height="15").btn-delete
+                              use(xlink:href="sprite.svg#cross")
+            li.page-item.reviews-item
+                .field
+                  .field-header
+                    .user
+                      .user-block
+                        img(src=`../../../images/content/kovalchuk.jpg`).reviews-pic
+                      .user-block
+                        .user-text.user-name Владимир Сабанцев
+                        .user-text.user-position Преподаватель
+                  .field-content
+                    .reviews-text
+                      p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  .field-footer
+                    .field-buttons
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Править
+                          .btn__column
+                            svg(width="17" height="17").btn-redact
+                              use(xlink:href="sprite.svg#pencil")
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Удалить
+                          .btn__column
+                            svg(width="15" height="15").btn-delete
+                              use(xlink:href="sprite.svg#cross")
+            li.page-item.reviews-item
+                .field
+                  .field-header
+                    .user
+                      .user-block
+                        img(src=`../../../images/content/kovalchuk.jpg`).reviews-pic
+                      .user-block
+                        .user-text.user-name Владимир Сабанцев
+                        .user-text.user-position Преподаватель
+                  .field-content
+                    .reviews-text
+                      p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  .field-footer
+                    .field-buttons
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Править
+                          .btn__column
+                            svg(width="17" height="17").btn-redact
+                              use(xlink:href=`sprite.svg#pencil`)
+                      .action-button
+                        button(type="button").btn.btn-block
+                          .btn__column Удалить
+                          .btn__column
+                            svg(width="15" height="15").btn-delete
+                              use(xlink:href="sprite.svg#cross")
