@@ -9,5 +9,6 @@
   "endColor": "#4e00ed",
   "mainColor": "#464d62",
   "super-wide": "2500px",
-  "mini": "320px"
+  "mini": "320px",
+  "errors-color": "#cd1515"
 }
