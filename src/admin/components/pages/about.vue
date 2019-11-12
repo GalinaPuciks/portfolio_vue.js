@@ -1,76 +1,113 @@
 <template lang="pug">
-  .about-page-container
-    .container
-      .about-page__title
-        h1.page-title Обо мне
-        button.about-page__add-new(
-        ) Добавить группу
-      form(@submit.prevent="addNewCategory")
-        input(type="text" v-model="title" placeholder="Имя категории") 
-        input(type="submit" value="Добавить")
-    .about-page__content
-      .container.container--mobile-wide
-        ul.skill-list
-          li.skill-list__item(v-for="category in categories" :key="category.id")
-            skills-group(
-              :category="category"
-            )
+  section.about
+    .container.page__container
+      .page__header
+        .page__columns
+          h2.page-title Блок «Обо мне»
+        .page__columns
+          button(type="button" @click="showAddingCard = true").btn.btn--add.btn--text Добавить группу
+      .page__content
+        ul.about__list
+          li(v-if="showAddingCard").about__item
+            .card
+              vc-skills-title(:category="{ showAddingCard }" @hideCard="hideCard")
+              .card__content
+              .card__footer
+                vc-skills-add-new()
+          li(v-for="category, index in getCategories" :key="index").about__item
+            .card
+              vc-skills-title(:category="category")
+              .card__content
+                ul.skills
+                  li(v-for="skill in category.skills" :key="skill.id")
+                    vc-skills-item(:skill="skill")
+              .card__footer
+                vc-skills-add-new(:category="category")
 
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState, mapActions, mapGetters } from 'vuex';
 export default {
-  components: {
-    skillsGroup: () => import("../skills-group")
-  },
   data: () => ({
-    title: ""
+    showAddingCard: false,
+    formBlocked: false,
+    title: '',
+    skill: {
+      title: '',
+      percent: 0,
+      category: 0
+    }
   }),
-  created() {
-    this.fetchCategories();
+  components: {
+    vcInput: () => import('../input.vue'),
+    vcSkillsItem: () => import('../skills-item.vue'),
+    vcSkillsTitle: () => import('../skills-title.vue'),
+    vcSkillsAddNew: () => import('../skills-add-new.vue'),
   },
   computed: {
-    ...mapState("categories", {
-      categories: state => state.categories
+    ...mapGetters('categories', ['getCategories']),
+    ...mapState('user', {
+      userID: state => state.user.id
     })
   },
   methods: {
-    ...mapActions("categories", ["addCategory", "fetchCategories"]),
-    async addNewCategory() {
-      try {
-        await this.addCategory(this.title);
-      } catch (error) {
-        alert(error.message);
-      }
+    ...mapActions('categories', ['loadCategories']),
+    hideCard () {
+      this.showAddingCard = false;
     }
+  },
+  created () {
+    this.loadCategories(this.userID);
   }
 };
 </script>
 
 <style lang="postcss" scoped>
 @import "../../../styles/mixins.pcss";
-.skill-container {
-  border: 1px solid black;
-  padding: 10px;
-}
-.about-page__title {
+//@import "../../main-styles/mainStyles"
+
+.card {
   display: flex;
-  align-items: center;
-  margin-bottom: 60px;
-  .page-title {
-    margin-bottom: 0;
-    margin-right: 60px;
-    @include phones {
-      margin-bottom: 28px;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+  padding: 30px;
+  min-height: 380px;
+  height: 100%;
+}
+.page__header {
+  display:flex;
+  align-items: baseline;
+}
+
+
+.about__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+    @include tablets {
+      flex-direction: column;
+    }
+}
+
+.about__item {
+    flex-basis: calc(50% - 30px);
+    margin-left: 30px;
+    margin-bottom: 30px;
+    
+    background-color: #ffffff;
+    :hover {
+      //box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
     }
   }
-  @include phones {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+
+
+.about {
+  position: relative;
 }
-.about-page__add-new {
+
+.btn--text {
   color: $links-color;
   font-weight: bold;
   display: flex;
@@ -91,27 +128,19 @@ export default {
     flex-basis: 20px;
   }
 }
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -30px;
-  @include phones {
-    margin-left: 0;
-  }
+
+.page-title {
+  margin-right: 30px;
+
 }
-.skill-list__item {
-  width: calc(100% / 2 - 30px);
-  margin-left: 30px;
-  margin-bottom: 30px;
-  &.loading {
-    opacity: 0.5;
-    pointer-events: none;
-    filter: grayscale(100%);
+
+.card__content {
+    padding: 20px 10px 20px;
+    flex: 1;
   }
-  @include phones {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 12px;
-  }
+.card__footer {
+    padding: 0 10px;
+ 
 }
+  
 </style>

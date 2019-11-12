@@ -4,9 +4,9 @@
       template
         header.header-container
           app-header
-        section.tabs-container
+        .tabs-container 
           tabs
-        main.content-container
+        section.main.content-container
           router-view
 </template>
 
@@ -57,9 +57,20 @@ button {
   }
 }
 .content-container {
-  background: url("~images/bg/admin.jpg") center center no-repeat / cover;
-  flex: 1;
+  background: url("../images/content/Baloon.jpg") center center no-repeat / cover;
+  //flex: 1;
+  //min-height: 100vh;
   padding-top: 60px;
+  position: relative;
+  &:before{ 
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background-color: rgba(255, 255, 255, 0.9);
+              }
   @include phones {
     padding-top: 30px;
   }
@@ -69,6 +80,15 @@ button {
   font-size: 21px;
   font-weight: bold;
 }
+
+.reviews-section, .works-section, .about-page-container {
+  position: relative;
+}
+
+section {
+  position: relative;
+}
+
 </style>
 
 

@@ -6,7 +6,7 @@
           .user__pic
             img(src="../../images/content/user1.jpg").user__pic-avatar
           .user__name 
-            span Владимир Астаханов
+            span Galina Kisseleva
             a.exit-btn(@click="logout") Выйти
             
         .header__title Панель администрирования
@@ -17,7 +17,12 @@
 import { mapActions } from "vuex";
 export default {
   methods: {
-    ...mapActions("user", ["logout"])
+    ...mapActions("user", ["logoutUser"]),
+    async logout () {
+        await this.logoutUser();
+        await this.$router.push('/login')
+
+      }
   }
 };
 </script>

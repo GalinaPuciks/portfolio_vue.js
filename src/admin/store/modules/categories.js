@@ -1,77 +1,109 @@
-const findRequiredCategory = (category, skill, cb) => {
-    if (category.id === skill.category) {
-      cb(category);
-    }
-  
-    return category;
-  };
-  
-  export default {
-    namespaced: true,
-    state: {
-      categories: []
-    },
-    mutations: {
-      SET_CATEGORIES(state, categories) {
-        state.categories = categories;
-      },
-      ADD_CATEGORY(state, category) {
-        state.categories.unshift(category);
-      },
-      ADD_SKILL(state, newSkill) {
-        state.categories = state.categories.map(category => {
-          if (category.id === newSkill.category) {
-            category.skills.push(newSkill);
-          }
-  
-          return category;
-        });
-      },
-      REMOVE_SKILL(state, deletedSkill) {
-        const removeSkill = category => {
-          category.skills = category.skills.filter(
-            skill => skill.id !== deletedSkill.id
-          );
-        };
-  
-        const findRequiredCategory = category => {
-          if (category.id === deletedSkill.category) {
-            removeSkill(category);
-          }
-  
-          return category;
-        };
-  
-        state.categories = state.categories.map(findRequiredCategory);
-      },
-      EDIT_SKILL(state, editedSkill) {
-        const editSkill = category => {
-          category.skills = category.skills.map(skill =>
-            skill.id === editedSkill.id ? editedSkill : skill
-          );
-        };
-  
-        state.categories = state.categories.map(category =>
-          findRequiredCategory(category, editedSkill, editSkill(category))
-        );
+import showErrorTooltip from '@/helpers/showErrorTooltip.js/';
+const findRequiredCategory = (category, payload, cb) => {
+  if (category.id === payload.category) {
+    cb(category);
+  }
+  return category;
+};
+const replaceAllKeys = (category, payload) => {
+  if (category.id === payload.category.id) {
+    Object.keys(category).map(key => {
+      if (payload.category[key]) {
+        return category[key] = payload.category[key];
       }
+    });
+  }
+  return category;
+};
+export default {
+  namespaced: true,
+  state: {
+    categories: []
+  },
+  mutations: {
+    SET_CATEGORIES (state, payload) {
+      state.categories = payload;
     },
-    actions: {
-      async addCategory({ commit }, title) {
-        try {
-          const { data } = await this.$axios.post("/categories", { title });
-          commit("ADD_CATEGORY", data);
-        } catch (error) {
-          throw new Error(
-            error.response.data.error || error.response.data.message
-          );
+    ADD_CATEGORY (state, payload) {
+      state.categories.unshift(payload);
+    },
+    UPDATE_CATEGORY (state, payload) {
+      state.categories = state.categories.map(category => replaceAllKeys(category, payload));
+    },
+    DELETE_CATEGORY (state, payload) {
+      state.categories = state.categories.filter(category => {
+        return category.id !== payload;
+      });
+    },
+    ADD_SKILL (state, payload) {
+      state.categories = state.categories.map(category => {
+        if (category.id === payload.category) {
+          category.skills = category.skills || [];
+          category.skills.push(payload);
+          console.log(category);
         }
-      },
-      async fetchCategories({ commit }) {
-        try {
-          const { data } = await this.$axios.get("/categories/1");
-          commit("SET_CATEGORIES", data);
-        } catch (error) {}
+        return category;
+      });
+    },
+    DELETE_SKILL (state, payload) {
+      const removeSkill = category => {
+        category.skills = category.skills.filter(skill => skill.id !== payload.id);
+      };
+      state.categories = state.categories.map(category => {
+        return findRequiredCategory(category, payload, removeSkill);
+      });
+    },
+    EDIT_SKILL (state, payload) {
+      const editSkill = category => {
+        category.skills = category.skills.map(skill => {
+          return (skill.id === payload.id) ? payload : skill;
+        });
+      };
+      state.categories = state.categories.map(category => {
+        return findRequiredCategory(category, payload, editSkill);
+      });
+    }
+  },
+  actions: {
+    async loadCategories (content, payload) {
+      try {
+        const { data } = await this.$axios.get(`/categories/${ payload }`);
+        content.commit('SET_CATEGORIES', data);
+      } catch (error) {
+        throw new Error(error.response.data.error || error.response.data.message);
+      }
+    },
+    async addCategory (content, payload) {
+      try {
+        const { data } = await this.$axios.post(`/categories`, { title: payload });
+        content.commit('ADD_CATEGORY', data);
+        content.commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Категория успешно добавленна' }, { root: true });
+      } catch (error) {
+        showErrorTooltip(content, error);
+      }
+    },
+    async updateCategory (content, payload) {
+      try {
+        const { data } = await this.$axios.post(`/categories/${payload.id}`, { title: payload.title });
+        content.commit('UPDATE_CATEGORY', data);
+        content.commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Категория успешно обновлена' }, { root: true })
+      } catch (error) {
+        showErrorTooltip(content, error);
+      }
+    },
+    async deleteCategory (content, payload) {
+      try {
+        const { data } = this.$axios.delete(`/categories/${payload}`);
+        content.commit('DELETE_CATEGORY', payload);
+        content.commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Категория успешно удалена' }, { root: true })
+      } catch (error) {
+        showErrorTooltip(content, error);
       }
     }
-  };
+  },
+  getters: {
+    getCategories (state) {
+      return state.categories;
+    }
+  }
+};

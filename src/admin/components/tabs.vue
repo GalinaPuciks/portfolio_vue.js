@@ -19,6 +19,7 @@ export default {
         { title: "Обо мне", href: "/" },
         { title: "Отзывы", href: "/reviews" },
         { title: "Работы", href: "/works" }
+  
       ]
     };
   }

@@ -1,5 +1,8 @@
 <template lang="pug">
-  .input__error-tooltip-container {{errorText}}
+  .input__error-tooltip-container(:class="{'input__error-tooltip-container--showed': errorText}") {{errorText}}
+    
+
+    
 </template>
 
 <script>
@@ -16,12 +19,14 @@ export default {
 
 <style lang="postcss" scoped>
 .input__error-tooltip-container {
-  z-index: 100;
-  background: $errors-color;
-  color: #fff;
+  width: 50%;
+ z-index: 100;
+ background: #FF0000;
+ color: #fff;
   padding: 12px 20px;
   font-size: 14px;
   white-space: nowrap;
+  position:relative;
   &:before {
     content: "";
     display: block;
@@ -29,7 +34,7 @@ export default {
     height: 0;
     border: 10px solid transparent;
     border-top: 0;
-    border-bottom-color: red;
+    border-bottom-color: #ff0000;
     border-bottom-width: 7px;
     position: absolute;
     bottom: 100%;
@@ -37,4 +42,6 @@ export default {
     transform: translateX(-50%);
   }
 }
+
+
 </style>

@@ -10,5 +10,7 @@
   "mainColor": "#464d62",
   "super-wide": "2500px",
   "mini": "320px",
+  "links-active": "#5500f2",
+  "admin-blue": "#383bcf",
   "errors-color": "#cd1515"
 }

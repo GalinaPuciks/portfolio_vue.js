@@ -5,14 +5,14 @@ import axios from "axios";
 import store from "../store";
 
 Vue.use(VueRouter);
-const baseURL = "http://localhost:8000";
+const baseURL = "  https://webdev-api.loftschool.com";
 const guard = axios.create({
   baseURL
 });
 
 const router = new VueRouter({ routes });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
   const isPublicRoute = to.matched.some(record => record.meta.public);
   const isUserLogged = store.getters["user/userIsLogged"];
 

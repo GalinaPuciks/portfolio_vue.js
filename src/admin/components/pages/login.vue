@@ -6,38 +6,60 @@
       ).login__form
         .login__form-title Авторизация
         .login__row
-          app-input(
+          vc-input(
             title="Логин"
             icon="user"
             v-model="user.name"
-          )
+            :errorText="validation.firstError('user.name')"
+            
+          ) 
         .login__row
-          app-input(
+          vc-input(
             title="Пароль"
             icon="key"
             type="password"
             v-model="user.password"
+            :errorText="validation.firstError('user.password')"
           )
         .login__btn
           button(
             type="submit"
           ).login__send-data Отправить
+     
 </template>
 
 <script>
 import $axios from "@/requests";
+import SimpleVueValidator from 'simple-vue-validator';
+const {Validator} = SimpleVueValidator.Validator;
+import { mapActions} from 'vuex';
+
+
+
 export default {
-  components: {
-    appInput: () => import("components/input.vue")
-  },
-  data: () => ({
+mixins: [SimpleVueValidator.mixin],
+data: () => ({
     user: {
       name: "",
       password: ""
     }
   }),
+  components: {
+    vcTooltip: () => import('../../components/tooltip.vue'),
+    vcInput: () => import('../../components/input.vue')
+  },
+  
+   validators: {
+    'user.name': function (value) {
+      return Validator.value(value).required('поле обязательно для заполнения').minLength(5, 'должно быть мин. символов');
+    },
+    'user.password': function (value) {
+      return Validator.value(value).required('поле обязательно для заполения').minLength(5, 'должно быть мин. символов');
+    }
+  },
   methods: {
-    async login() {
+    ...mapActions('tooltip', ['showTooltip']),
+   async login() {
       try {
         const {
           data: { token }
@@ -64,7 +86,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("~images/bg/admin.jpg") center center / cover no-repeat;
+  background: url("../../../images/content/Baloon.jpg") center center / cover no-repeat;
   &:before {
     content: "";
     position: absolute;
