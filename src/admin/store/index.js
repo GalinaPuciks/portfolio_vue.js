@@ -18,6 +18,6 @@ export default new Vuex.Store({
     skills,
     works,
     reviews,
-    tooltip
+    tooltip,
   }
 });

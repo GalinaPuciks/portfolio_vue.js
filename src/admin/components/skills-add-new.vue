@@ -1,20 +1,20 @@
 <template lang="pug">
   form(@submit.prevent="addNewSkill" :class="{ 'is-blocked': formBlocked }").add-new-skill
-    .add-new-skill__columns
+    .add-new-skill-block
         vc-input(
         type="text"
         name="title"
         placeholder='Новый навык'
         v-model="skill.title"
         :errorText="validation.firstError('skill.title')")
-    .add-new-skill__columns
+    .add-new-skill-block.number-percent
         vc-input(
         type="number"
         name="percent"
         v-model="skill.percent"
         :errorText="validation.firstError('skill.percent')")
-    .add-new-skill__columns
-        button(type="submit").btn.btn--add.btn--big
+    .add-new-skill-block
+        button(type="submit").btn.btn-add.btn-blue-cross
 </template>
 <script>
 import { mapActions } from 'vuex';
@@ -40,8 +40,8 @@ export default {
     'skill.percent': value => {
       return Validator.value(value)
         .integer('Должно быть числом')
-        .between(0, 100, 'Некорректное значение для процентов')
-        .required('Поле не может быть пустым');
+        .between(0, 100, 'Значение должно быть от 0 до 100')
+        .required('Поле обязательно для заполнения');
     }
   },
   components: {
@@ -65,33 +65,15 @@ export default {
 
 <style lang="postcss" scoped>
 @import "../../styles/mixins";
-//@import "../main-styles/mainStyles";
+
 
 .add-new-skill {
   display: flex;
   flex-grow: 0;
   justify-content: flex-end;
-  &__cell {
-    margin-right: 20px;
-    &:nth-child(1) {
-      flex-basis: 45%;
-    }
-    &:nth-child(2) {
-      flex-basis: 20%;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  &.is-blocked {
-    opacity: .3;
-    filter: grayscale(100%);
-    pointer-events: none;
-    user-select: none;
-  }
 }
 
-.btn--add {
+.btn-add {
     font-size: 0;
     display: flex;
     align-items: center;
@@ -111,9 +93,20 @@ export default {
 }
 
 
-    .btn--big:before {
+    .btn-blue-cross:before {
       font-size: 30px;
       width: 40px;
       height: 40px;
     }
+  
+  .add-new-skill-block {
+    margin-right:5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .number-percent {
+    width:20%;
+  }
 </style>

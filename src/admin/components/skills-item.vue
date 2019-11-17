@@ -1,18 +1,18 @@
 <template lang="pug">
-  .skills__row(v-if="editMode" @keyup.enter="editExistedSkill" @keyup.esc="editMode = !editMode")
-    .skills__cell: vc-input(type="text" name="skillTitle" v-model="editedSkill.title")
-    .skills__cell: vc-input(type="number" name="skillPercent" :strong="true" v-model="editedSkill.percent")
-    .skills__cell
+  .skills-row(v-if="editMode" @keyup.enter="editExistedSkill" @keyup.esc="editMode = !editMode")
+    .skills-cell: vc-input(type="text" name="skillTitle" v-model="editedSkill.title")
+    .skills-cell: vc-input(type="number" name="skillPercent" :strong="true" v-model="editedSkill.percent")
+    .skills-cell
       .controls
-        .controls__btn: button(type='button' @click="editExistedSkill").btn.btn-icon--check
-        .controls__btn: button(type='button' @click="editMode = !editMode").btn.btn-icon--cancel
-  .skills__row(v-else)
-    .skills__cell {{ skill.title }}
-    .skills__cell {{ skill.percent }} %
-    .skills__cell
+        .controls-btn: button(type='button' @click="editExistedSkill").btn.btn-icon-tick
+        .controls-btn: button(type='button' @click="editMode = !editMode").btn.btn-icon-cross
+  .skills-row(v-else)
+    .skills-cell {{ skill.title }}
+    .skills-cell {{ skill.percent }} %
+    .skills-cell
       .controls
-        .controls__btn: button(type='button' @click="editMode = !editMode").btn.btn-icon--edit
-        .controls__btn: button(type='button' @click="deleteSkill(skill)").btn.btn-icon--delete 
+        .controls-btn: button(type='button' @click="editMode = !editMode").btn.btn-icon-pencil
+        .controls-btn: button(type='button' @click="deleteSkill(skill)").btn.btn-icon-cross 
 
 </template>
 <script>
@@ -41,17 +41,17 @@ export default {
 </script>
 <style lang="postcss" scoped>
 @import "../../styles/mixins";
-//@import "../main-styles/mainStyles";
+
 
 .skills {
   width: 100%;
-  &__row {
+  &-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
   }
-  &__cell {
+  &-cell {
     &:nth-child(1) {
       flex-basis: 70%;
       margin-right: 30px;
@@ -60,8 +60,8 @@ export default {
       flex-basis: 20%;
       margin-right: 30px;
     }
-    &:nth-child(3) {
-    }
+    //&:nth-child(3) {
+    //}
   }
 }
 
@@ -69,14 +69,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  &__btn {
+  &-btn {
     margin-right: 20px;
     &:last-child {
       margin-right: 0;
     }
   }
 }
-.btn-icon--edit {
+.btn-icon-pencil {
     background-image: svg-load("pencil.svg", fill=#cfd2d7);
     width: 16px;
     height: 15px;
@@ -85,14 +85,14 @@ export default {
 
 
 
-  .btn-icon--delete {
+  .btn-icon-cross {
     background-image: svg-load("trash.svg", fill=#cfd2d7);
     width: 13px;
     height: 15px;
     border:none;
   }
   
-.btn-icon--check {
+.btn-icon-tick {
     background-image: svg-load("tick.svg", fill=#00d70a);
     width: 15px;
     height: 12px;

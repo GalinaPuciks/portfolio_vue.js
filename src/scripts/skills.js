@@ -1,4 +1,5 @@
 import Vue from "vue";
+import xhr from '../scripts/xhrRequests';
 
 const skill = {
     template: "#skill",
@@ -56,6 +57,7 @@ new Vue ({
     components: {skillsRow},
     created () {
         //this.skills = data;
-    }
+    },
+  
 });
 

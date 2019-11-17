@@ -2,18 +2,18 @@
 <template lang="pug">
   section.works-section
     .container.page-container
-      .page__header
-        .page__columns
+      .page-header
+        .page-columns
           h1.page-title.works-title Блок «Работы»
-      .page__content
-        .page__row(v-if="showAddingCard")
+      .page-content
+        .page-row(v-if="showAddingCard")
           vc-works-add-new(:work="work" @hideAddingCard="hideAddingCard")
-        .page__row
-          ul.works__list
-            li.works__item
+        .page-row
+          ul.works-list
+            li.works-item
               .card.card--add
-                button(type="button"  @click="showAddingCard = true").btn.btn--add.btn--xbig Добавить работу 
-            li(v-for="work in getWorks" :key="work.id").works__item
+                button(type="button"  @click="showAddingCard = true").btn.btn-add.btn-blue-big-add Добавить работу 
+            li(v-for="work in getWorks" :key="work.id").works-item
               vc-works-item(:work="work" @editWork="editWork")
     include ../../../blocks/button.pug
     include ../../../blocks/form-main.pug
@@ -44,7 +44,7 @@ export default {
       this.showAddingCard = false;
       this.work = { ...{
           title: '',
-          link: 'http://test.com',
+          //link: 'http://test.com',
           description: '',
           techs: '',
           photo: ''
@@ -85,7 +85,7 @@ export default {
     bottom: 3%;
     right: 3%;
   }
-  &__list {
+  &-list {
     display: flex;
     flex-wrap: wrap;
     margin-left: -30px;
@@ -107,7 +107,7 @@ export default {
     }
   }
 
-.works__item {
+.works-item {
     flex-basis: calc(100% / 3 - 30px);
     margin-left: 30px;
     margin-bottom: 30px;
@@ -117,14 +117,14 @@ export default {
 }
 ////////////////////////////////////////
 
-.page__header {
+.page-header {
     display: flex;
     margin-bottom: 55px;
   }
-.page__columns:not(:last-child) {
+.page-columns:not(:last-child) {
     margin-right: 30px;
   }
-.page__row:not(:last-child) {
+.page-row:not(:last-child) {
     margin-bottom: 30px;
   }
 .works-title {
@@ -133,7 +133,7 @@ font-size: 21px;
 font-weight: 700;
 line-height: 34px;
 }
-.btn--add {
+.btn-add {
     font-size: 0;
     display: flex;
     align-items: center;
@@ -153,7 +153,7 @@ line-height: 34px;
 }
 
 
-.btn--xbig {
+.btn-blue-big-add {
       color: #fff;
       display: flex;
       justify-content: center;

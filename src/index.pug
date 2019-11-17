@@ -108,6 +108,16 @@ html(lang="en")
             .section-title.works__section-title Мои работы
             .works__content
               #slider-component
+        //section.works#works
+          .container.works__container
+            .section-title.works__section-title Мои работы
+            .works__wrapper
+            .works__slider
+              vc-works-slider
+            .works__content
+              .works__tags
+                vc-tags
+              vc-work
 
       .triangles.triangles_bottom
         svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
@@ -170,16 +180,7 @@ html(lang="en")
                         placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса"
                       ).form-block__input
               .from__row
-                button(type="submit" ).gradient-btn.form__submit Отправить
-
-
-
-
-
-
-
-
-          
+                button(type="submit" ).gradient-btn.form__submit Отправить   
       footer.footer
         .container.footer__container
           .footer__copyright

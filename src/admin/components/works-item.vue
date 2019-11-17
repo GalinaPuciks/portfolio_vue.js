@@ -1,24 +1,24 @@
 <template lang="pug">
     .card.card--works
-        .card__header
+        .card-header
             figure.works__figure
               img(:src="workPhoto(work.photo)" style="object-fit: cover; object-position: center")
               figcaption.works__figcaption
                 vc-tags(:techs="work.techs")
-        .card__content
-          .works__row
+        .card-content
+          .works-row
             h3.page-subtitle {{ work.title}}
-          .works__row
+          .works-row
             p {{ work.description }}
-          .works__row
+          .works-row
             a(:href="work.link").btn.btn--link {{ work.link }}
-        .card__footer
+        .card-footer
             .controls
-              .controls__btn
-                  button(type="button"  @click="editWork").btn.btn--edit 
+              .controls-btn
+                  button(type="button"  @click="editWork").btn.btn-pencil 
                   .btn-text Править
-              .controls__btn
-                  button(type="button" @click="deleteTheWork(work.id)").btn.btn--cross
+              .controls-btn
+                  button(type="button" @click="deleteTheWork(work.id)").btn.btn-cross
                   .btn-text Удалить
 </template>
 <script>
@@ -27,7 +27,7 @@ export default {
   name: 'works-item',
   props: ['work'],
   components: {
-    //vcTags: () => import('components/tags/tags.vue/')
+    vcTags: () => import('../components/tags.vue')
   },
   methods: {
     ...mapActions('works', ['deleteWork']),
@@ -53,21 +53,21 @@ export default {
     margin: 0;
     padding: 0;
     cursor: pointer;
-    &__column:not(:last-child) {
-      color: rgba($text-color, .5);
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 30px;
-      margin-right: 10px;
-    }
+    //&__column:not(:last-child) {
+      //color: rgba($text-color, .5);
+      //font-size: 16px;
+      //font-weight: 600;
+      //line-height: 30px;
+      //margin-right: 10px;
+    //}
 }
 
-.btn--edit {
-      background-image: svg-load("pencil.svg", fill=#cfd2d7);
+.btn-pencil {
+      background-image: svg-load("pencil.svg", fill=#383bcf);
       width: 16px;
       height: 15px;
     }
-.btn--cross {
+.btn-cross {
       background-image: svg-load("cross.svg", fill=#bf2929);
       width: 16px;
       height: 15px;
@@ -81,20 +81,20 @@ export default {
   padding: 30px;
   min-height: 380px;
   height: 100%;
-  &--add {
-    justify-content: center;
-    align-items: center;
-    box-shadow: none;
-    padding: 0;
-    background-color: #3f35cb;
-    background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
-  }
+  //&--add {
+    //justify-content: center;
+    //align-items: center;
+    //box-shadow: none;
+    //padding: 0;
+    //background-color: #3f35cb;
+    //background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+  //}
   &--works:hover {
     cursor: pointer;
     opacity: .7;
     box-shadow: none;
   }
-  &__header {
+  &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -106,13 +106,13 @@ export default {
     margin: -30px -30px 0 -30px;
     border-bottom: 
   }
-  &__column:nth-child(1) {
-    flex-basis: 60%;
-  }
-  &__column:not(:last-child) {
-    margin-right: 20px;
-  }
-  &__content {
+  //&__column:nth-child(1) {
+    //flex-basis: 60%;
+  //}
+  //&__column:not(:last-child) {
+    //margin-right: 20px;
+  //}
+  &-content {
     padding: 20px 10px 20px;
     flex: 1;
   }
@@ -122,13 +122,13 @@ export default {
     padding-right: 0;
   }
 
-  &__footer {
+  &-footer {
     padding: 0 10px;
   }
 
-  &__add-new-skill-group {
-    flex-basis: 65%;
-  }
+  //&__add-new-skill-group {
+    //flex-basis: 65%;
+ // }
 }
 
 .controls {
@@ -136,7 +136,7 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
-.controls__btn {
+.controls-btn {
     margin-right: 20px;
     display: flex;
     align-items: center;
@@ -148,5 +148,14 @@ export default {
 .btn-text {
   margin-right: 10px;
 }
-
+.works__figcaption {
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+  }
+.works__figure {
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
 </style>

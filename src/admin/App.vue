@@ -8,6 +8,7 @@
           tabs
         section.main.content-container
           router-view
+        vc-tooltip()
 </template>
 
 <script>
@@ -15,7 +16,8 @@ import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
     appHeader: () => import("components/header"),
-    tabs: () => import("components/tabs")
+    tabs: () => import("components/tabs"),
+    vcTooltip: () => import('components/tooltip.vue')
   }
 };
 </script>

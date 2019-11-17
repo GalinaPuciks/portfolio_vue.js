@@ -1,74 +1,69 @@
 <template lang="pug">
-  .login
-    .login__content
-      form(
-        @submit.prevent="login"
-      ).login__form
-        .login__form-title Авторизация
-        .login__row
-          vc-input(
-            title="Логин"
-            icon="user"
-            v-model="user.name"
-            :errorText="validation.firstError('user.name')"
-            
-          ) 
-        .login__row
-          vc-input(
-            title="Пароль"
-            icon="key"
-            type="password"
-            v-model="user.password"
-            :errorText="validation.firstError('user.password')"
-          )
+section.login
+  .login__content
+    h2.login__title Авторизация
+    form(@submit.prevent="submit").login__form
+      .login__row
+        vc-input(
+          :strong="true"
+          name="name"
+          title="Логин"
+          icon="user"
+          v-model="user.name"
+          :errorText="validation.firstError('user.name')"
+          :autofocus="true")
+      .login__row
+        vc-input(
+          :strong="true"
+          name="password"
+          title="Пароль"
+          icon="key"
+          type="password"
+          v-model="user.password"
+          :errorText="validation.firstError('user.password')")
+      .login__row
         .login__btn
-          button(
-            type="submit"
-          ).login__send-data Отправить
+          button(type="submit").btn.login__send-data Отправить
      
 </template>
 
 <script>
-import $axios from "@/requests";
-import SimpleVueValidator from 'simple-vue-validator';
-const {Validator} = SimpleVueValidator.Validator;
+import $axios from '@/requests/';
+import simpleVueValidator from 'simple-vue-validator';
+const { Validator } = simpleVueValidator;
 import { mapActions} from 'vuex';
-
-
-
 export default {
-mixins: [SimpleVueValidator.mixin],
-data: () => ({
+  mixins: [simpleVueValidator.mixin],
+  data: () => ({
     user: {
-      name: "",
-      password: ""
+      name: '',
+      password: ''
     }
   }),
   components: {
-    vcTooltip: () => import('../../components/tooltip.vue'),
-    vcInput: () => import('../../components/input.vue')
+    vcTooltip: () => import('../tooltip.vue'),
+    vcInput: () => import('../input.vue')
   },
-  
-   validators: {
+  validators: {
     'user.name': function (value) {
-      return Validator.value(value).required('поле обязательно для заполнения').minLength(5, 'должно быть мин. символов');
+      return Validator.value(value).required().minLength(6, 'должно быть минимум 5 символов');
     },
     'user.password': function (value) {
-      return Validator.value(value).required('поле обязательно для заполения').minLength(5, 'должно быть мин. символов');
+      return Validator.value(value).required().minLength(6, 'должно быть минимум 5 символов');
     }
   },
   methods: {
     ...mapActions('tooltip', ['showTooltip']),
-   async login() {
-      try {
-        const {
-          data: { token }
-        } = await $axios.post("/login", this.user);
-        localStorage.setItem("token", token);
-        $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-        this.$router.replace("/");
-      } catch (error) {
-        //error handling
+    submit: async function () {
+      if (await this.$validate()) {
+        try {
+          const { data: { token } } = await $axios.post('/login', this.user);
+          localStorage.setItem('token', token);
+          $axios.defaults.headers['Authorization'] = `Bearer ${ token }`;
+          await this.$router.replace('/');
+        } catch ({ message }) {
+          this.showTooltip( { message, type: 'error' });
+        }
       }
     }
   }
@@ -98,27 +93,40 @@ data: () => ({
     background: $text-color;
   }
 }
-.login__form-title {
-  font-size: 36px;
-  text-align: center;
-  font-weight: 600;
-}
-.login__content {
-  position: relative;
-  @include phones {
-    height: 100%;
-    width: 100%;
+
+  .login__content {
+    width: 563px;
+    padding: 50px 77px 60px;
+    background: #fff;
+    position:relative;
   }
-}
-.login__row {
-  margin-bottom: 35px;
-}
-.login__btn {
-  display: flex;
-  width: 100%;
-  padding: 0 8%;
-  justify-content: center;
-}
+
+
+
+  .login__form {
+
+  }
+
+  .login__row:not(:last-child) {
+    margin-bottom: 40px;
+  }
+  .login__title {
+    color: #414c63;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 60px;
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+
+
+  .login__btn {
+    display: flex;
+    justify-content: center;
+  }
+
+
 .login__send-data {
   width: 100%;
   padding: 30px;
@@ -131,20 +139,6 @@ data: () => ({
   &[disabled] {
     opacity: 0.5;
     filter: grayscale(100%);
-  }
-}
-.login__form {
-  width: 563px;
-  padding: 50px 77px 60px;
-  background: #fff;
-  @include phones {
-    width: 100%;
-    padding-right: 7%;
-    padding-left: 7%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 }
 </style>

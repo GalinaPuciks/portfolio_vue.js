@@ -1,27 +1,27 @@
 <template lang="pug">
   section.about
-    .container.page__container
-      .page__header
-        .page__columns
+    .container.page-container
+      .page-header
+        .page-columns
           h2.page-title Блок «Обо мне»
-        .page__columns
+        .page-columns
           button(type="button" @click="showAddingCard = true").btn.btn--add.btn--text Добавить группу
-      .page__content
-        ul.about__list
-          li(v-if="showAddingCard").about__item
+      .page-content
+        ul.about-list
+          li(v-if="showAddingCard").about-item
             .card
               vc-skills-title(:category="{ showAddingCard }" @hideCard="hideCard")
-              .card__content
-              .card__footer
+              .card-content
+              .card-footer
                 vc-skills-add-new()
-          li(v-for="category, index in getCategories" :key="index").about__item
+          li(v-for="category, index in getCategories" :key="index").about-item
             .card
               vc-skills-title(:category="category")
-              .card__content
+              .card-content
                 ul.skills
                   li(v-for="skill in category.skills" :key="skill.id")
                     vc-skills-item(:skill="skill")
-              .card__footer
+              .card-footer
                 vc-skills-add-new(:category="category")
 
 </template>
@@ -65,7 +65,7 @@ export default {
 
 <style lang="postcss" scoped>
 @import "../../../styles/mixins.pcss";
-//@import "../../main-styles/mainStyles"
+
 
 .card {
   display: flex;
@@ -76,13 +76,13 @@ export default {
   min-height: 380px;
   height: 100%;
 }
-.page__header {
+.page-header {
   display:flex;
   align-items: baseline;
 }
 
 
-.about__list {
+.about-list {
     display: flex;
     flex-wrap: wrap;
     margin-left: -30px;
@@ -91,7 +91,7 @@ export default {
     }
 }
 
-.about__item {
+.about-item {
     flex-basis: calc(50% - 30px);
     margin-left: 30px;
     margin-bottom: 30px;
@@ -134,13 +134,18 @@ export default {
 
 }
 
-.card__content {
+.card-content {
     padding: 20px 10px 20px;
     flex: 1;
   }
-.card__footer {
+.card-footer {
     padding: 0 10px;
- 
 }
+
+.page-title{
+    color: $text-color;
+    font-weight: 700;
+    line-height: 34px;
+  }
   
 </style>

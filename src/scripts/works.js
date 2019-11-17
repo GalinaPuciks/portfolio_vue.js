@@ -1,4 +1,7 @@
 import Vue from "vue";
+import xhr from '../scripts/xhrRequests';
+import EventBus from '../scripts/eventBus';
+
 
 const thumbs = {
   template: "#slider-thumbs",
@@ -105,8 +108,22 @@ new Vue({
     const data = require("../data/works.json");
     this.works = this.makeArrWithRequiredImages(data);
   }
+  
 });
 
+ //mounted() {
+   // this.makeInfiniteLoopForCurIndex(this);
+   // xhr('get', 'works/204')
+     // .then(works => {
+       // return works.map(work => {
+         // return (work.photo = 'https://webdev-api.loftschool.com/' + work.photo) && work;
+       // });
+     // })
+     // .then(works => this.works = works)
+     // .then(() => {
+      //  EventBus.$emit('pages', this.pages());
+     // });
+  //},
 
 
 

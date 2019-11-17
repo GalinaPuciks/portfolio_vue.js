@@ -1,58 +1,53 @@
 <template lang="pug">
-  .skill-container
-    h2 {{category.category}}
-      
-    hr
-    table
-      skills-item(
-        v-for="skill in category.skills"
-        :key="skill.id"
-        :skill="skill"
-      )
-    hr
-    form(
-      @submit.prevent="addNewSkill"
-      :class={blocked: formBlocked}
-    ).add-skill-wrapper
-      input(type="text" placeholder="Новый навык" v-model="skill.title").input-skill
-      input(type="text" placeholder="100%" v-model="skill.percent").input-skill.input-skill--percent
-      button(type="submit").about-page__add-new--big
+  .card
+    vc-skills-title(:category="category")
+    .card-content
+      ul.skills
+        li(v-for="skill in category.skills" :key="skill.id")
+          vc-skills-item(:skill="skill")
+    .card-footer
+      form(@submit.prevent="addNewSkill" :class="{ 'is-blocked': formBlocked }").add-new-skill
+        .add-new-skill-cell
+          vc-input(type="text" name="title" placeholder='Новый навык' v-model="skill.title")
+        .add-new-skill-cell
+          vc-input(type="number" name="percent" v-model="skill.percent")
+        .add-new-skill-cell
+          button(type="submit").btn.btn--add.btn--big
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from 'vuex';
 export default {
-  components: {
-    skillsItem: () => import("./skills-item")
-  },
-  props: {
-    category: {
-      type: Object,
-      default: () => ({}),
-      required: true
-    }
-  },
-  data() {
+  props: ['category'],
+  data () {
     return {
       formBlocked: false,
       skill: {
-        title: "",
+        title: '',
         percent: 0,
         category: this.category.id
       }
     };
   },
+  components: {
+    vcInput: () => import('../components/input.vue'),
+    vcSkillsItem: () => import('..components/skills-item.vue/'),
+    vcSkillsTitle: () => import('..components/skills-title.vue/'),
+  },
   methods: {
-    ...mapActions("skills", ["addSkill"]),
-    async addNewSkill() {
+    ...mapActions('categories', ['addCategory', 'loadCategories']),
+    ...mapActions('skills', ['addSkill']),
+    ...mapActions('tooltip', ['showTooltip']),
+    async addNewSkill () {
       this.formBlocked = true;
       try {
         await this.addSkill(this.skill);
-        this.skill.title = "";
-        this.skill.percent = "";
-      } catch (error) {
-        // errors
+        this.showTooltip({ type: 'success', message: 'Навык добавлен' });
+      } catch ({ message }) {
+        this.showTooltip({ type: 'error', message });
       } finally {
-        this.formBlocked = false;
+        this.formBlocked = "";
+        this.skill.percent = 0;
+        this.skill.title = "";
       }
     }
   }
@@ -88,7 +83,6 @@ export default {
     color: #fff;
     margin-right: 13px;
     flex-shrink: 0;
-    //flex-basis: 20px;
     font-size: 30px;
     font-weight: 400;
   line-height: 40px;
@@ -108,7 +102,5 @@ export default {
   width: 50px;
 }
 
-hr {
-  opacity: 0.4;
-}
+
 </style>

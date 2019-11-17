@@ -1,23 +1,24 @@
 <template lang="pug">
-form(@submit="skillsGroupTitle" @keyup.esc="editMode = false").card__header
-        .card__column(v-if="editMode")
+form(@submit="skillsGroupTitle" @keyup.esc="editMode = false").card-header
+        .card-block(v-if="editMode")
             vc-input(
                 :autofocus="true"
                 type="text"
                 placeholder="Название новой группы"
                 v-model="newTitle"
                 :errorText="validation.firstError('newTitle')")
-        .card__column(v-else)
+        .card-block(v-else)
             .page-subtitle {{ category.category }}
-        .card__column
+        .card-block
             .controls(v-if="editMode")
-                .controls__btn
-                    button(type='submit').btn.btn-icon--check
-                .controls__btn
-                    button(type='button' @click="deleteSkillGroup").btn.btn-icon--cancel
+                .controls-btn
+                    button(type='submit').btn.btn-icon-tick
+                .controls-btn
+                    button(type='button' @click="deleteSkillGroup").btn.btn-icon-cross
             .controls(v-else)
-                .controls__btn
-                    button(type='button' @click="editMode = true").btn.btn-icon--edit
+                .controls-btn
+                    button(type='button' @click="editMode = true").btn.btn-icon-pencil
+                    
 </template>
 <script>
 import { mapActions } from 'vuex';
@@ -77,9 +78,9 @@ export default {
 </script>
 <style lang="postcss" scoped>
 @import "../../styles/mixins";
-//@import "../main-styles/mainStyles";
 
-.page-title, .page-subtitle {
+
+ .page-subtitle {
     color: $text-color;
     font-weight: 700;
     line-height: 34px;
@@ -90,7 +91,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  &__btn {
+  &-btn {
     margin-right: 20px;
     &:last-child {
       margin-right: 0;
@@ -98,26 +99,26 @@ export default {
   }
 }
 
- .btn-icon--check {
+ .btn-icon-tick {
     background-image: svg-load("tick.svg", fill=#00d70a);
     width: 15px;
     height: 12px;
     border:none;
   }
-  .btn-icon--cancel {
+  .btn-icon-cross {
     background-image: svg-load("cross.svg", fill=#bf2929);
     width: 14px;
     height: 12px;
     border:none;
   }
-  .btn-icon--edit {
+  .btn-icon-pencil {
     background-image: svg-load("pencil.svg", fill=#a0a5b1);
     width: 16px;
     height: 15px;
     border:none;
   }
 
-.card__header {
+.card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

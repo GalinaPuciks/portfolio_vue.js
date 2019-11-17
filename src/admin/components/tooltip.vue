@@ -58,7 +58,7 @@ export default {
   position: relative;
   width: 100%;
   max-width: 400px;
-  background: #4bb133;
+  background: #2d44d4;
   padding: 22px;
   @include phones {
     max-width: 100%;
